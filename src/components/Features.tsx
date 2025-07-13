@@ -1,7 +1,7 @@
 // src/components/Features.tsx
 export default function Features() {
   return (
-    <section className="py-20 px-6 bg-white">
+    <section id="services" className="scroll-mt-28 py-20 px-6 bg-white">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-slate-700 mb-16">
           Des outils puissants pour piloter vos véhicules

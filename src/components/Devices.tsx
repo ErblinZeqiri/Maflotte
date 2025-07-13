@@ -1,7 +1,7 @@
 // src/components/Devices.tsx
 export default function Devices() {
   return (
-    <section className="relative w-full h-[1500px] overflow-hidden">
+    <section id="devices" className="scroll-mt-28 relative w-full h-[1500px] overflow-hidden">
       {/* Image de fond */}
       <img
         src="photos/device_mockup_fianle.png" // remplace par ton image réelle

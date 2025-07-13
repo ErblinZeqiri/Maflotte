@@ -16,7 +16,7 @@ export default function Vehicles() {
   ];
 
   return (
-    <section className="bg-sky-100 py-20 px-6">
+    <section id="vehicules" className="scroll-mt-28 bg-sky-100 py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold text-slate-700 text-center mb-16">
           Type de véhicules
