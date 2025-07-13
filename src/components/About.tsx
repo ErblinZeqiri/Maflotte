@@ -20,7 +20,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="scroll-mt-28 w-[1440px] h-[600px] relative overflow-hidden">
+    <section
+      id="about"
+      className="scroll-mt-28 pt-28 w-[1440px] h-[600px] relative overflow-hidden"
+    >
       {/* Image de fond (optionnel) */}
       <video
         autoPlay

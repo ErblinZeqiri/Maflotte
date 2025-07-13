@@ -1,7 +1,10 @@
 // src/components/Contact.tsx
 export default function Contact() {
   return (
-    <section id="contact" className="scroll-mt-28 w-full h-auto md:h-[700px] flex flex-col md:flex-row overflow-hidden">
+    <section
+      id="contact"
+      className="scroll-mt-28 pt-28 w-full h-auto md:h-[700px] flex flex-col md:flex-row overflow-hidden"
+    >
       {/* Colonne gauche : Infos */}
       <div className="w-full md:w-1/2 bg-white px-8 py-12 border-r border-zinc-300">
         <div className="mb-16">
