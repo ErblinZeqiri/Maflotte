@@ -1,7 +1,7 @@
 // src/components/Devices.tsx
 export default function Devices() {
   return (
-    <section id="devices" className="scroll-mt-28 relative w-full h-[1500px] overflow-hidden">
+    <section id="devices" className="scroll-mt-28 pt-28 relative w-full h-[1500px] overflow-hidden">
       {/* Image de fond */}
       <img
         src="photos/device_mockup_fianle.png" // remplace par ton image réelle
@@ -15,9 +15,11 @@ export default function Devices() {
           Une plateforme accessible partout, sur tous vos appareils
         </h2>
         <p className="text-slate-700 text-lg font-medium leading-relaxed tracking-wide max-w-xl">
-          Que vous soyez au bureau, en déplacement ou sur le terrain, accédez à MAFLOTTE depuis votre ordinateur, tablette ou smartphone.
+          Que vous soyez au bureau, en déplacement ou sur le terrain, accédez à
+          MAFLOTTE depuis votre ordinateur, tablette ou smartphone.
           <br />
-          Gérez, localisez et suivez vos véhicules en toute simplicité, où que vous soyez.
+          Gérez, localisez et suivez vos véhicules en toute simplicité, où que
+          vous soyez.
         </p>
       </div>
     </section>

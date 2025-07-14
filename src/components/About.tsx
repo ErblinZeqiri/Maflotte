@@ -20,7 +20,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="scroll-mt-28 w-[1440px] h-[600px] relative overflow-hidden">
+    <section id="about" className="scroll-mt-28 pt-28 w-[1440px] h-[600px] relative overflow-hidden">
       {/* Image de fond (optionnel) */}
       <video
         autoPlay
@@ -29,10 +29,7 @@ export default function About() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source
-          src="/videos/team.mp4"
-          type="video/mp4"
-        />
+        <source src="/videos/team.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas les vidéos HTML5.
       </video>
       {/* Overlay sombre */}

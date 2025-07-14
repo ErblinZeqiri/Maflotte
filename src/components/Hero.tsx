@@ -1,7 +1,7 @@
 // src/components/Hero.tsx
 export default function Hero() {
   return (
-    <section id="accueil" className="scroll-mt-28 relative w-full h-screen max-h-[810px] overflow-hidden">
+    <section id="accueil" className="scroll-mt-28 pt-28 relative w-full h-screen max-h-[810px] overflow-hidden" >
       {/* Image de fond */}
       <video
         autoPlay
