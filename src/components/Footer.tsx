@@ -1,8 +1,8 @@
 // src/components/Footer.tsx
 export default function Footer() {
   return (
-    <footer className="bg-slate-700 text-white py-12 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col gap-8">
+    <footer className="bg-slate-700 text-white py-12 px-4 sm:px-6 md:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-8">
         {/* Top : logo + description */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           {/* Logo */}

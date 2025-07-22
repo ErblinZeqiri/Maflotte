@@ -20,8 +20,8 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="scroll-mt-28 pt-28 w-[1440px] h-[600px] relative overflow-hidden">
-      {/* Image de fond (optionnel) */}
+    <section id="about" className="relative w-full overflow-hidden scroll-mt-28 pt-28 min-h-[600px]">
+      {/* Fond vidéo pleine largeur */}
       <video
         autoPlay
         loop
@@ -32,18 +32,16 @@ export default function About() {
         <source src="/videos/team.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas les vidéos HTML5.
       </video>
-      {/* Overlay sombre */}
+
       <div className="absolute inset-0 bg-black/30 z-10" />
 
-      {/* Contenu */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 py-16 h-full flex flex-col justify-between">
+      {/* Contenu centré */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-16 flex flex-col justify-between">
         <h2 className="text-white text-3xl md:text-5xl font-bold text-center mb-8">
           Ce que vous offre MAFLOTTE
         </h2>
 
-        {/* Grille centrale */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-10 relative text-white">
-          {/* Lignes décoratives */}
           <div className="hidden md:block absolute left-1/2 top-0 h-full w-px bg-white/40 -translate-x-1/2" />
           <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/40 -translate-y-1/2" />
 

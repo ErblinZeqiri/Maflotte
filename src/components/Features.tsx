@@ -1,36 +1,65 @@
-// src/components/Features.tsx
 export default function Features() {
   return (
-    <section id="services" className="scroll-mt-28 py-20 px-6 bg-white">
+    <section id="services" className="scroll-mt-28 py-20 px-4 sm:px-6 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-slate-700 mb-16">
+        <p className="text-sm uppercase tracking-wider text-slate-400 mb-2">
+          Nos fonctionnalités
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-16">
           Des outils puissants pour piloter vos véhicules
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
-          {features.map((item, index) => (
-            <div
-              key={index}
-              className="bg-sky-100 rounded-[20px] p-6 shadow-md flex flex-col items-center text-center"
-            >
-              <img
-                src={item.icon}
-                alt={item.title}
-                className="w-16 h-16 mb-4 object-contain"
-              />
-
-              <h3 className="text-slate-700 text-lg font-bold mb-2">
-                {item.title}
-              </h3>
-              <p className="text-neutral-500 text-sm">{item.description}</p>
-            </div>
+        {/* 3 premières cartes */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {features.slice(0, 3).map((item, index) => (
+            <Card key={index} {...item} />
           ))}
+        </div>
+
+        {/* Dernière ligne : texte + 2 cartes */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+          {/* Colonne gauche : texte + bouton */}
+          <div className="flex flex-col justify-center items-start text-left gap-4 md:col-span-1">
+            <p className="text-slate-600 text-base">
+              Gagnez du temps dès aujourd'hui.<br />
+              Aucun engagement, aucun papier, 100% en ligne.
+            </p>
+            <div className="flex items-center gap-3">
+              <a
+                href="#contact"
+                className="inline-block px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition"
+              >
+                Demander une démo
+              </a>
+            </div>
+          </div>
+
+          {/* Colonne droite : les 2 dernières cartes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:col-span-2">
+            {features.slice(3).map((item, index) => (
+              <Card key={index + 3} {...item} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+// Carte réutilisable
+function Card({ title, description, icon }: any) {
+  return (
+    <div className="bg-white border border-sky-100 rounded-xl p-6 shadow-sm text-left hover:shadow-md transition">
+      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-sky-100 mb-4">
+        <img src={icon} alt={title} className="w-6 h-6 object-contain" />
+      </div>
+      <h3 className="text-slate-800 text-base font-semibold mb-1">{title}</h3>
+      <p className="text-sm text-slate-500 leading-snug">{description}</p>
+    </div>
+  );
+}
+
+// Données des fonctionnalités
 const features = [
   {
     title: "Gestion de la vitesse",
