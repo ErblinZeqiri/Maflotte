@@ -27,7 +27,7 @@ export default function Features() {
             <div className="flex items-center gap-3">
               <a
                 href="#contact"
-                className="inline-block px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition"
+                className="inline-block px-6 py-3 rounded-full bg-violet-500 text-white font-semibold text-sm hover:bg-violet-700 transition"
               >
                 Demander une démo
               </a>

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-[#2F3F58] h-28 px-8 flex items-center justify-between">
+    <header className="w-full bg-[#2F3F58] h-28 px-8 flex items-center justify-between">
       {/* Logo gauche */}
       <div className="flex items-center gap-4">
         <img src="/photos/logo.png" alt="Logo Maflotte" className="h-16" />

@@ -49,7 +49,7 @@ export default function Vehicles() {
           Type de véhicules
         </h2>
       </div>
-
+      <div className="h-8" />
       <div className="relative max-w-7xl mx-auto overflow-hidden">
         {/* LEFT MASK */}
         <div className="pointer-events-none absolute left-0 top-0 h-full w-64 bg-gradient-to-r from-sky-100 via-sky-100 to-transparent z-30" />
@@ -97,7 +97,7 @@ export default function Vehicles() {
           ))}
         </Swiper>
       </div>
-
+      <div className="h-12" />
       <div className="mx-auto max-w-7xl mt-8">
         <Typography
           variant="h6"
@@ -109,7 +109,8 @@ export default function Vehicles() {
           variant="body2"
           className="opacity-80 text-sm md:text-base lg:text-lg text-slate-400 text-center"
         >
-          Que vous gériez des voitures, camions, taxis ou engins de chantier, MAFLOTTE centralise tout pour vous faire gagner du temps.
+          Que vous gériez des voitures, camions, taxis ou engins de chantier,
+          MAFLOTTE centralise tout pour vous faire gagner du temps.
         </Typography>
       </div>
     </section>

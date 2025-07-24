@@ -9,7 +9,7 @@ import Header from '@/components/Header';
 
 export default function Home() {
   return (
-    <main className="pt-28">
+    <main>
       <Header />
       {/* ... */}
       <Hero />

@@ -1,4 +1,7 @@
-// src/components/Contact.tsx
+"use client";
+
+import GoogleMap from "./GoogleMap";
+
 export default function Contact() {
   return (
     <section
@@ -6,34 +9,38 @@ export default function Contact() {
       className="scroll-mt-28 w-full bg-white overflow-hidden"
     >
       <div className="flex flex-col md:flex-row w-full">
-        {/* Colonne gauche */}
-        <div className="w-full md:w-1/2 bg-white border-r border-zinc-300 px-8 py-12 flex flex-col items-center justify-center text-center">
-          <div className="mb-16">
-            <h3 className="text-3xl md:text-3xl md:text-5xl font-bold text-slate-700 mb-6">
-              Adresse
-            </h3>
-            <p className="text-neutral-500 text-base leading-relaxed">
-              Aloha Transports Services
-              <br />
-              Rue du Pré-Bouvier 8<br />
-              1242 Satigny
-              <br />
-              Genève, Suisse
-            </p>
+        {/* Colonne gauche : Adresse + Carte */}
+        <div className="relative w-full md:w-1/2 border-r border-zinc-300 px-8 py-12 flex flex-col items-end justify-center text-right overflow-hidden min-h-[400px]">
+          <div className="relative z-10 bg-white/80 p-6 rounded-xl shadow-md space-y-10 text-right w-full max-w-md">
+            <div>
+              <h3 className="text-3xl md:text-5xl font-bold text-slate-700 mb-4">
+                Adresse
+              </h3>
+              <p className="text-neutral-500 text-base leading-relaxed">
+                Aloha Transports Services
+                <br />
+                Rue du Pré-Bouvier 8<br />
+                1242 Satigny
+                <br />
+                Genève, Suisse
+              </p>
+            </div>
+            <div>
+              <h3 className="text-3xl md:text-5xl font-bold text-slate-700 mb-2">
+                Téléphone
+              </h3>
+              <p className="text-neutral-400 text-2xl md:text-4xl font-semibold">
+                +41 22 312 21 12
+              </p>
+            </div>
           </div>
 
-          <div>
-            <h3 className="text-3xl md:text-3xl md:text-5xl font-bold text-slate-700 mb-4">
-              Téléphone
-            </h3>
-            <p className="text-neutral-400 text-2xl md:text-4xl font-semibold">
-              +41 22 312 21 12
-            </p>
-          </div>
+          {/* Carte dynamique */}
+          <GoogleMap />
         </div>
 
         {/* Colonne droite : Formulaire */}
-        <div className="w-full md:w-1/2 px-8 py-12 flex flex-col items-center justify-center">
+        <div className="w-full md:w-1/2 px-8 py-12 flex flex-col items-center justify-center text-left">
           <div className="w-full bg-sky-100 px-6 py-10 rounded-xl shadow max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-bold text-slate-700 text-center mb-8">
               Contactez-nous
