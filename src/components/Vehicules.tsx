@@ -8,23 +8,24 @@ import Typography from "@mui/material/Typography";
 export default function Vehicles() {
   const vehicles = [
     {
-      title: "Véhicule de location ou privé",
+      title: "Gérez vos véhicules d’entreprise",
       image: "/vehicles/vehicule_tourisme.png",
     },
     {
-      title: "Tous types de poids lourd",
+      title: "Suivez vos camions en temps réel",
       image: "/vehicles/vehicule_camion.png",
     },
     {
-      // title: "MAFLOTTE",
-      image: "/photos/logo-no-bg_big.png",
+      title: "Une plateforme pour tout votre parc",
+      image: "/photos/logo/icon_black.svg",
+      isLogo: true,
     },
     {
-      title: "Engins de chantier",
+      title: "Pilotez vos engins de chantier",
       image: "/vehicles/vehicule_chantier.png",
     },
     {
-      title: "Transports publics et taxis",
+      title: "Optimisez vos taxis et bus",
       image: "/vehicles/vehicule_taxi.png",
     },
   ];
@@ -42,7 +43,7 @@ export default function Vehicles() {
   return (
     <section
       id="vehicules"
-      className="scroll-mt-28 bg-sky-100 py-20 px-4 sm:px-6 md:px-8"
+      className="scroll-mt-28 bg-white py-20 px-4 sm:px-6 md:px-8"
     >
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold text-slate-700">
@@ -52,9 +53,9 @@ export default function Vehicles() {
       <div className="h-8" />
       <div className="relative max-w-7xl mx-auto overflow-hidden">
         {/* LEFT MASK */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-64 bg-gradient-to-r from-sky-100 via-sky-100 to-transparent z-30" />
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-64 bg-gradient-to-r from-white to-transparent z-30" />
         {/* RIGHT MASK */}
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-64 bg-gradient-to-l from-sky-100 via-sky-100 to-transparent z-30" />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-64 bg-gradient-to-l from-white to-transparent z-30" />
 
         <Swiper
           onSwiper={(swiper) => {
@@ -79,11 +80,23 @@ export default function Vehicles() {
                 pointer-events-none select-none
                 swiper-slide-active:w-[340px] swiper-slide-active:h-[340px] swiper-slide-active:scale-110 swiper-slide-active:shadow-lg swiper-slide-active:z-20"
               >
-                <img
-                  src={vehicule.image}
-                  alt={vehicule.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                {vehicule.isLogo ? (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white/60 p-6 rounded-full shadow-md backdrop-blur-md scale-100 md:scale-110">
+                      <img
+                        src={vehicule.image}
+                        alt={vehicule.title}
+                        className="w-20 h-20 object-contain"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={vehicule.image}
+                    alt={vehicule.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
                 <div className="absolute inset-0" />
                 <div className="absolute bottom-0 left-0 w-full z-10 flex items-end">
                   <div className="w-full px-4 pb-4 flex justify-center items-center bg-white/30 backdrop-blur-md">
@@ -113,6 +126,8 @@ export default function Vehicles() {
           MAFLOTTE centralise tout pour vous faire gagner du temps.
         </Typography>
       </div>
+      <div className="h-12" />
+      <hr className="border-stone-200 border-t-2 my-20" />
     </section>
   );
 }

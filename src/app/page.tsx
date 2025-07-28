@@ -11,19 +11,12 @@ export default function Home() {
   return (
     <main>
       <Header />
-      {/* ... */}
       <Hero />
-      {/* ... */}
       <Features />
-      {/* ... */}
       <Vehicles />
-      {/* ... */}
       <Devices />
-      {/* ... */}
       <About />
-      {/* ... */}
       <Contact />
-      {/* ... */}
       <Footer />
     </main>
   );

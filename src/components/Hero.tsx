@@ -31,7 +31,7 @@ export default function Hero() {
           Suivez vos véhicules en temps réel grâce à
         </h1>
         <img
-          src="photos/logo.png"
+          src="photos/logo/full_logo_white.svg"
           alt="Logo Maflotte"
           className="mt-8 w-[320px] max-w-full drop-shadow-md"
         />
@@ -43,7 +43,7 @@ export default function Hero() {
 
         <div className="mt-10 flex flex-col md:flex-row gap-4">
           <Link
-            href="https://votre-portail-connexion.com"
+            href="https://login.maflotte.ch/#/login"
             className="px-8 py-4 bg-slate-700 text-white text-xl rounded-lg shadow hover:bg-slate-800 transition flex items-center justify-center"
             target="_blank"
             rel="noopener noreferrer"

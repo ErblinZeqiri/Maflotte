@@ -3,16 +3,16 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="w-full bg-[#2F3F58] h-28 px-8 flex items-center justify-between">
+    <header  className="w-full bg-white h-28 px-8 flex items-center justify-between">
       {/* Logo gauche */}
       <div className="flex items-center gap-4">
-        <img src="/photos/logo.png" alt="Logo Maflotte" className="h-16" />
+        <img src="/photos/logo/full_logo_black.svg" alt="Logo Maflotte" className="h-28 object-contain" />
       </div>
 
       {/* Navigation centrale */}
-      <nav className="hidden lg:flex items-center gap-8 text-base font-semibold text-white">
+      <nav className="hidden lg:flex items-center gap-8 text-base font-semibold text-black">
         <Link href="#accueil" scroll={true}>
-            <span className=" text-violet-500 hover:text-violet-500">Accueil</span>
+            <span className="hover:text-violet-500">Accueil</span>
         </Link>
         <Link href="#services" scroll={true}>
             <span className="hover:text-violet-500">Services</span>
@@ -33,8 +33,8 @@ export default function Header() {
 
       {/* Zone droite : Se connecter + langue */}
       <div className="hidden lg:flex items-center gap-6">
-        <a href="#login" className="flex items-center gap-2 text-violet-500 font-semibold hover:opacity-80">
-          <img src="/photos/logo-no-bg.png" alt="Connexion" className="w-6 h-6" />
+        <a href="https://login.maflotte.ch/#/login" target="_blank" className="flex items-center gap-2 text-black font-semibold hover:opacity-80">
+          <img src="/photos/logo/icon_black.svg" alt="Connexion" className="w-6 h-6" />
           Se connecter
         </a>
         <img src="/photos/french_logo.png" alt="FR" className="w-6 h-6 rounded-full" />

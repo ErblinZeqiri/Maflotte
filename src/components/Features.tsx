@@ -1,6 +1,9 @@
 export default function Features() {
   return (
-    <section id="services" className="scroll-mt-28 py-20 px-4 sm:px-6 md:px-8 bg-white">
+    <section
+      id="services"
+      className="scroll-mt-28 py-20 px-4 sm:px-6 md:px-8 bg-white"
+    >
       <div className="max-w-6xl mx-auto text-center">
         <p className="text-sm uppercase tracking-wider text-slate-400 mb-2">
           Nos fonctionnalités
@@ -16,32 +19,33 @@ export default function Features() {
           ))}
         </div>
 
-        {/* Dernière ligne : texte + 2 cartes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {/* Colonne gauche : texte + bouton */}
-          <div className="flex flex-col justify-center items-start text-left gap-4 md:col-span-1">
+        <div className="flex flex-col md:flex-row-reverse gap-6 items-start">
+          {/* Les 2 dernières cartes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+            {features.slice(3).map((item, index) => (
+              <Card key={index + 3} {...item} />
+            ))}
+          </div>
+
+          {/* Texte + bouton */}
+          <div className="flex flex-col justify-center items-start text-left gap-4 w-full md:w-1/3 px-6 md:px-0 md:pl-8">
             <p className="text-slate-600 text-base">
-              Gagnez du temps dès aujourd'hui.<br />
+              Gagnez du temps dès aujourd'hui.
+              <br />
               Aucun engagement, aucun papier, 100% en ligne.
             </p>
             <div className="flex items-center gap-3">
               <a
                 href="#contact"
-                className="inline-block px-6 py-3 rounded-full bg-violet-500 text-white font-semibold text-sm hover:bg-violet-700 transition"
+                className="inline-block px-6 py-3 rounded-full bg-slate-700 text-white font-semibold text-sm hover:bg-slate-800 transition"
               >
                 Demander une démo
               </a>
             </div>
           </div>
-
-          {/* Colonne droite : les 2 dernières cartes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:col-span-2">
-            {features.slice(3).map((item, index) => (
-              <Card key={index + 3} {...item} />
-            ))}
-          </div>
         </div>
       </div>
+      <hr className="border-stone-200 border-t-2 my-20" />
     </section>
   );
 }

@@ -1,6 +1,6 @@
 export default function Devices() {
   return (
-    <section id="devices" className="scroll-mt-28 pt-28 pb-28 w-full bg-white">
+    <section id="devices" className="scroll-mt-28  pb-28 w-full bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Texte à gauche */}
         <div className="md:w-1/2">

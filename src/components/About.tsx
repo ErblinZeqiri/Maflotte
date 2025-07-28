@@ -1,20 +1,36 @@
 export default function About() {
   const items = [
     {
-      title: "Suivi en temps réel de vos véhicules",
-      text: "Visualisez en direct les trajets, localisations et statistiques de vos véhicules, avec des rapports automatiques.",
+      title: "Suivi en temps réel",
+      text: "Visualisez en direct la position de vos véhicules, consultez l'historique des trajets et recevez des alertes en cas d’anomalie.",
+    },
+    {
+      title: "Tableau de bord centralisé",
+      text: "Pilotez votre flotte en un clin d'œil grâce à des graphiques clairs, indicateurs de performance, et alertes visuelles automatiques.",
+    },
+    {
+      title: "Kilométrage automatique",
+      text: "Suivi automatisé du kilométrage par véhicule, avec rapports périodiques et alertes d’entretien basées sur les données réelles.",
+    },
+    {
+      title: "Entretien et éco-conduite",
+      text: "Programmez les entretiens, recevez des rappels et analysez les comportements de conduite pour réduire les coûts.",
+    },
+    {
+      title: "Gestion des conducteurs",
+      text: "Attribuez des véhicules à vos employés, consultez leur journal d’activité et suivez leur style de conduite.",
     },
     {
       title: "Coupe-moteur à distance",
-      text: "Arrêtez un véhicule à distance depuis votre tableau de bord, où que vous soyez. Simple, rapide et sécurisé.",
+      text: "Sécurisez vos véhicules avec la désactivation à distance, idéale en cas de vol ou de comportement suspect.",
     },
     {
-      title: "Accompagnement expert",
-      text: "Profitez d'un accompagnement personnalisé pour la configuration, l’optimisation et le suivi de votre flotte.",
+      title: "Alertes et règles personnalisées",
+      text: "Créez des règles sur-mesure pour être notifié en cas de vitesse excessive, sortie de zone ou déconnexion GPS.",
     },
     {
-      title: "Démonstration gratuite",
-      text: "Testez notre plateforme gratuitement et découvrez ses bénéfices sans engagement.",
+      title: "Accompagnement humain + démo gratuite",
+      text: "Nous vous assistons de A à Z dans la mise en place de votre flotte. Essayez MAFLOTTE sans engagement.",
     },
   ];
 
@@ -30,7 +46,7 @@ export default function About() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/map.mp4" type="video/mp4" />
+        <source src="/videos/ma.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas les vidéos HTML5.
       </video>
 

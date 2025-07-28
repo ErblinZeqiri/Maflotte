@@ -1,0 +1,36 @@
+header de couleur clair
+
+titre carte plus explicite pour mettre l'app dans ces véhicule
+Se faire passer pour un client et 
+
+
+appareil :
+tablette ok
+tel nok
+pc
+
+
+Ajouter nouvelle options, genre Dashboard, rapport, journal etc voir image
+
+plus d'animation:
+offre en surbriance
+ajouter animation sur texte qui apparais et icone
+
+voiture, fond transparent
+
+
+rapticire cadre adresse
+
+la carte faire plus petite et responsive	
+
+
+
+peut être changer "Un membre de GVA Group SA"
+
+Changer les bordures du formulaire contact
+
+
+
+dans texte footer ne pas mettre que  c'est une entreprise, c'est une plateforme 
+
+faire logo, soit changer de couleur soit changer logo

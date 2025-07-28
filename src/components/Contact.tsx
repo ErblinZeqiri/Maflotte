@@ -10,14 +10,14 @@ export default function Contact() {
     >
       <div className="flex flex-col md:flex-row w-full">
         {/* Colonne gauche : Adresse + Carte */}
-        <div className="relative w-full md:w-1/2 border-r border-zinc-300 px-8 py-12 flex flex-col items-end justify-center text-right overflow-hidden min-h-[400px]">
-          <div className="relative z-10 bg-white/80 p-6 rounded-xl shadow-md space-y-10 text-right w-full max-w-md">
+        <div className="relative w-full md:w-1/2 border-r border-zinc-300 px-8 py-12 flex flex-col items-center md:items-end justify-center text-center md:text-right overflow-hidden min-h-[400px]">
+          <div className="relative z-10 bg-white/30 backdrop-blur-sm p-4 rounded-lg border border-white text-left w-fit space-y-6">
             <div>
               <h3 className="text-3xl md:text-5xl font-bold text-slate-700 mb-4">
                 Adresse
               </h3>
               <p className="text-neutral-500 text-base leading-relaxed">
-                Aloha Transports Services
+                Un membre de GVA Group SA
                 <br />
                 Rue du Pré-Bouvier 8<br />
                 1242 Satigny
@@ -30,13 +30,15 @@ export default function Contact() {
                 Téléphone
               </h3>
               <p className="text-neutral-400 text-2xl md:text-4xl font-semibold">
-                +41 22 312 21 12
+                +41 21 211 26 22
               </p>
             </div>
           </div>
 
           {/* Carte dynamique */}
-          <GoogleMap />
+          <div className="hidden md:block w-full h-[300px] mt-8">
+            <GoogleMap />
+          </div>
         </div>
 
         {/* Colonne droite : Formulaire */}
