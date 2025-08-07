@@ -1,23 +1,49 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import GoogleMap from "./GoogleMap";
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="contact"
-      className="scroll-mt-28 w-full bg-white overflow-hidden"
+      ref={sectionRef}
+      className="scroll-mt-28 w-full bg-white overflow-hidden scroll-offset"
     >
       <div className="flex flex-col md:flex-row w-full">
         {/* Colonne gauche : Adresse + Carte */}
-        <div className="relative w-full md:w-1/2 border-r border-zinc-300 px-8 py-12 flex flex-col items-center md:items-end justify-center text-center md:text-right overflow-hidden min-h-[400px]">
+        <div
+          className={`relative w-full md:w-1/2 border-r border-zinc-300 px-8 py-12 flex flex-col items-center md:items-end justify-center text-center md:text-right overflow-hidden min-h-[400px]
+            transition-all duration-700 ease-out
+            ${
+              visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-12"
+            }
+          `}
+        >
           <div className="relative z-10 bg-white/30 backdrop-blur-sm p-4 rounded-lg border border-white text-left w-fit space-y-6">
             <div>
               <h3 className="text-3xl md:text-5xl font-bold text-slate-700 mb-4">
                 Adresse
               </h3>
               <p className="text-neutral-500 text-base leading-relaxed">
-                Un membre de GVA Group SA
+                Membre de GVA Group SA
                 <br />
                 Rue du Pré-Bouvier 8<br />
                 1242 Satigny
@@ -42,7 +68,16 @@ export default function Contact() {
         </div>
 
         {/* Colonne droite : Formulaire */}
-        <div className="w-full md:w-1/2 px-8 py-12 flex flex-col items-center justify-center text-left">
+        <div
+          className={`w-full md:w-1/2 px-8 py-12 flex flex-col items-center justify-center text-left
+            transition-all duration-700 ease-out
+            ${
+              visible
+                ? "opacity-100 translate-x-0 delay-300"
+                : "opacity-0 translate-x-12"
+            }
+          `}
+        >
           <div className="w-full bg-sky-100 px-6 py-10 rounded-xl shadow max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-bold text-slate-700 text-center mb-8">
               Contactez-nous
@@ -103,6 +138,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <hr className="border-stone-200 border-t-2" />
     </section>
   );
 }

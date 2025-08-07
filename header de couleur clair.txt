@@ -34,3 +34,36 @@ Changer les bordures du formulaire contact
 dans texte footer ne pas mettre que  c'est une entreprise, c'est une plateforme 
 
 faire logo, soit changer de couleur soit changer logo
+
+-------------------------------------------------------------------------------
+meineflotte.ch
+faire le site en 3 langue
+le lien de connexion pour suisse allemande login.meineflotte.ch
+
+changer la police du logo, et changer la couleur du logo ou changer le logo 
+
+faire un fondu entre les 2 videos
+
+changer le titre "Types de véhicules"**
+
+
+ajouter voiture de lux dans carousel et mettre dasn texte "Gérer vos vehcules de location", ça doit etre la premier photo**
+
+Ajouter un section référence : GVA CARS, **
+
+Faire vrmt un mockup pc iPhone et iPad.**
+ajuter texte maj. grace un routeurs sur les routes on peut detecter les tag bluetooth
+
+Ajouter une section caméra:sur la video :superviser vos marchandise avec des caméra en tant réel
+https://www.shutterstock.com/video/clip-3825478805-high-tech-truck-drives-along-highway-surrounded-by
+mettre un texte genre pour les marchandise etc
+
+Ajouter une section air tag pour localisation. mettre sur la video: localisez vos vehicules et vos outils 
+https://www.shutterstock.com/video/clip-3725601523-top-down-aerial-view-highway-heavy-traffic-surveillance
+mettre un texte, genre lire plus
+lien du airtag :https://www.teltonika-gps.com/products/accessories/sensors-beacons/eye-sensor-standard
+changer le texte sur l'image
+mettre un texte en plus pour le tag : Bluetooth® sensor to keep an eye on your assets by monitoring temperature, humidity, movement, and magnet status
+Dire que nos routeur sur la route detecte les tag a prximité et peuvent avoir l'humidité position etc
+
+

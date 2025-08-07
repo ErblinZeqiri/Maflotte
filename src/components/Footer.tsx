@@ -4,7 +4,7 @@ export default function Footer() {
     <footer className="bg-white text-black py-12 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-8">
         {/* Top : logo + description */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 scroll-offset ">
           {/* Logo */}
           <img
             src="photos/logo/full_logo_black.svg"
@@ -14,13 +14,13 @@ export default function Footer() {
 
           {/* Texte */}
           <p className="text-black text-base font-light max-w-4xl">
-            Maflotte est spécialisée dans le suivi de véhicules en temps réel.
-            Grâce à une technologie avancée et un accompagnement sur mesure,
-            nous vous offrons une gestion de flotte fiable, sécurisée et
-            parfaitement maîtrisée. Suivi en direct, rapports détaillés, alertes
-            personnalisées : gardez toujours le contrôle, où que vous soyez.
-            Contactez-nous pour découvrir comment nous pouvons répondre aux
-            besoins spécifiques de votre entreprise.
+            MAFLOTTE est une plateforme de gestion de flotte pensée pour le
+            suivi de véhicules en temps réel. Grâce à une technologie avancée et
+            un accompagnement personnalisé, elle permet une gestion fiable,
+            sécurisée et optimisée de votre parc. Suivi en direct, rapports
+            détaillés, alertes personnalisées : gardez toujours le contrôle, où
+            que vous soyez. Essayez la plateforme et découvrez comment MAFLOTTE
+            s’adapte aux besoins spécifiques de votre entreprise.
           </p>
         </div>
 

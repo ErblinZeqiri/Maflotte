@@ -21,7 +21,7 @@
 |--------|-------------|
 | `Hero` | Accroche + vidéo d’intro |
 | `Services` | Présentation des fonctionnalités |
-| `Types de véhicules` | Visualisation selon l’usage (chantier, taxi, poids lourd, etc.) |
+| `Compatibilité véhicules` | Visualisation selon l’usage (chantier, taxi, poids lourd, etc.) |
 | `Appareils compatibles` | Accessible depuis tous vos écrans |
 | `À propos` | Explication de la valeur ajoutée |
 | `Contact` | Formulaire + coordonnées |
