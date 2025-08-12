@@ -36,6 +36,8 @@ export default function Vehicles() {
   ];
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [current, setCurrent] = useState<number>(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,6 +49,14 @@ export default function Vehicles() {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev: number) => (prev + 1) % vehicles.length);
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -96,15 +106,11 @@ export default function Vehicles() {
             loop={true}
             speed={700}
             spaceBetween={0}
-            autoplay={
-              visible
-                ? {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                  }
-                : false
-            }
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
             modules={[Autoplay]}
             className="!overflow-visible"
           >

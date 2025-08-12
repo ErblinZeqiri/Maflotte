@@ -1,12 +1,14 @@
-import Hero from '@/components/Hero';
+import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import Vehicles from '@/components/Vehicules';
-import Devices from '@/components/Devices';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import References from '@/components/References';
+import Vehicles from "@/components/Vehicules";
+import Devices from "@/components/Devices";
+import About from "@/components/About";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import References from "@/components/References";
+import CameraSection from "@/components/CameraSection";
+import Sensor from "@/components/Sensor";
 
 export default function Home() {
   return (
@@ -16,6 +18,11 @@ export default function Home() {
       <Features />
       <Vehicles />
       <Devices />
+      <CameraSection
+        videoSrcMp4="/videos/camera_camion.mp4"
+        className="pb-12 md:pb-16"
+      />
+      <Sensor />
       <References />
       <About />
       <Contact />
