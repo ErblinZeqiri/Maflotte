@@ -2,79 +2,51 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function About() {
+export type AboutItem = { title: string; text: string };
+export type AboutContent = {
+  kicker: string; // "Plateforme intelligente" / "Intelligente Plattform"
+  title: string; // "Ce que vous offre..." / "Das bietet..."
+  subtitle: string; // phrase sous le H1
+  videoSrc: string; // fond vidéo
+  items: AboutItem[]; // 8 items
+};
+
+export default function About({ content }: { content: AboutContent }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-
-  const items = [
-    {
-      title: "Suivi en temps réel",
-      text: "Visualisez en direct la position de vos véhicules, consultez l'historique des trajets et recevez des alertes en cas d’anomalie.",
-    },
-    {
-      title: "Tableau de bord centralisé",
-      text: "Pilotez votre flotte en un clin d'œil grâce à des graphiques clairs, indicateurs de performance, et alertes visuelles automatiques.",
-    },
-    {
-      title: "Kilométrage automatique",
-      text: "Suivi automatisé du kilométrage par véhicule, avec rapports périodiques et alertes d’entretien basées sur les données réelles.",
-    },
-    {
-      title: "Entretien et éco-conduite",
-      text: "Programmez les entretiens, recevez des rappels et analysez les comportements de conduite pour réduire les coûts.",
-    },
-    {
-      title: "Gestion des conducteurs",
-      text: "Attribuez des véhicules à vos employés, consultez leur journal d’activité et suivez leur style de conduite.",
-    },
-    {
-      title: "Coupe-moteur à distance",
-      text: "Sécurisez vos véhicules avec la désactivation à distance, idéale en cas de vol ou de comportement suspect.",
-    },
-    {
-      title: "Alertes et règles personnalisées",
-      text: "Créez des règles sur-mesure pour être notifié en cas de vitesse excessive, sortie de zone ou déconnexion GPS.",
-    },
-    {
-      title: "Accompagnement humain + démo gratuite",
-      text: "Nous vous assistons de A à Z dans la mise en place de votre flotte. Essayez MAFLOTTE sans engagement.",
-    },
-  ];
-
   const [itemsVisible, setItemsVisible] = useState<boolean[]>([]);
 
   useEffect(() => {
-    if (visible && itemsVisible.length === 0) {
-      const delays = items.map((_, index) => index * 300); // délai de 300ms entre chaque
-      delays.forEach((delay, index) => {
-        setTimeout(() => {
-          setItemsVisible((prev) => {
-            const updated = [...prev];
-            updated[index] = true;
-            return updated;
-          });
-        }, delay);
-      });
-    }
-  }, [visible]);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
+      ([entry]) => entry.isIntersecting && setVisible(true),
       { threshold: 0.3 }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // cascade simple pour les cartes
+  useEffect(() => {
+    if (visible && itemsVisible.length === 0) {
+      const delays = content.items.map((_, i) => i * 300);
+      delays.forEach((delay, i) =>
+        setTimeout(() => {
+          setItemsVisible((prev) => {
+            const next = [...prev];
+            next[i] = true;
+            return next;
+          });
+        }, delay)
+      );
+    }
+  }, [visible, content.items, itemsVisible.length]);
 
   return (
     <section
       id="about"
       className="relative w-full scroll-mt-28 overflow-hidden bg-black text-white scroll-offset"
     >
+      {/* vidéo de fond */}
       <video
         autoPlay
         loop
@@ -82,7 +54,7 @@ export default function About() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/1067634026-preview.mp4" type="video/mp4" />
+        <source src={content.videoSrc} type="video/mp4" />
         Votre navigateur ne supporte pas les vidéos HTML5.
       </video>
 
@@ -100,30 +72,31 @@ export default function About() {
           }`}
         >
           <p className="text-sm uppercase tracking-wider text-slate-400 mb-2">
-            Plateforme intelligente
+            {content.kicker}
           </p>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Ce que vous offre MAFLOTTE
+            {content.title}
           </h1>
           <p className="max-w-2xl mx-auto text-base text-gray-300">
-            Simplifiez la gestion de vos véhicules avec une solution complète,
-            claire et puissante.
+            {content.subtitle}
           </p>
         </div>
 
         {/* Items */}
         <div className="flex flex-wrap -mx-8">
-          {items.map((item, index) => (
+          {content.items.map((item, index) => (
             <div
-              key={index}
-              className={`xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l border-white/20
-              transition-all duration-700 ease-out
-                ${
-                  itemsVisible[index]
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 -translate-x-8"
-                }
-              `}
+              key={`${item.title}-${index}`}
+              className={`xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l border-white/20 transition-all duration-700 ease-out ${
+                itemsVisible[index]
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-8"
+              }`}
+              style={{
+                transitionDelay: itemsVisible[index]
+                  ? `${index * 60}ms`
+                  : "0ms",
+              }}
             >
               <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
               <p className="text-sm text-gray-300 mb-4">{item.text}</p>

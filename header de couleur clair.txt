@@ -63,7 +63,7 @@ https://www.shutterstock.com/video/clip-3725601523-top-down-aerial-view-highway-
 mettre un texte, genre lire plus
 lien du airtag :https://www.teltonika-gps.com/products/accessories/sensors-beacons/eye-sensor-standard
 changer le texte sur l'image
-mettre un texte en plus pour le tag : Bluetooth® sensor to keep an eye on your assets by monitoring temperature, humidity, movement, and magnet status
-Dire que nos routeur sur la route detecte les tag a prximité et peuvent avoir l'humidité position etc
+mettre un texte en plus pour le tag : Bluetooth® sensor to keep an eye on your assets by monitoring temperature, humidity, movement, and magnet status**
+Dire que nos routeur sur la route detecte les tag a prximité et peuvent avoir l'humidité position etc**
 
 

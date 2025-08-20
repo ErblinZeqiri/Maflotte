@@ -2,27 +2,28 @@
 
 import { useState, useEffect, useRef } from "react";
 
-const slides = [
-  {
-    type: "video",
-    src: "/videos/sensor_tag.mp4",
-    poster: "/photos/eye-sensor-side.png",
-    alt: "Camion détecté par antenne sur autoroute",
-    title: "Détection en temps réel sur la route",
-    text: "Nos routeurs embarqués détectent automatiquement les tags Bluetooth à proximité lors des trajets. Visualisez en direct la position de vos véhicules et la présence de vos équipements, même hors contact GPS.",
-  },
-  {
-    type: "image",
-    src: "/photos/eye-sensor-side.png",
-    alt: "Capteur Bluetooth Maflotte",
-    title: "Le capteur Bluetooth intelligent",
-    text: "Ce tag compact permet de localiser vos biens, de surveiller température, humidité, mouvement et état magnétique. Il s’intègre facilement à tous vos véhicules et équipements.",
-  },
-];
+export type SensorSlide = {
+  type: "video" | "image";
+  src: string;
+  poster?: string;
+  alt: string;
+  title: string;
+  text: string;
+};
 
-export default function Sensor() {
+export type SensorContent = {
+  slides: SensorSlide[];
+};
+
+export default function Sensor({
+  content,
+  autoplayMs = 5000,
+}: {
+  content: SensorContent;
+  autoplayMs?: number;
+}) {
   const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Animation d'apparition
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -30,32 +31,32 @@ export default function Sensor() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
+      ([entry]) => entry.isIntersecting && setVisible(true),
       { threshold: 0.3 }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const nextSlide = () =>
+    setCurrent((prev) => (prev + 1) % content.slides.length);
   const prevSlide = () =>
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrent(
+      (prev) => (prev - 1 + content.slides.length) % content.slides.length
+    );
 
   // Défilement automatique
   useEffect(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 5000); // 5 secondes
+      setCurrent((prev) => (prev + 1) % content.slides.length);
+    }, autoplayMs);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [current]);
+  }, [current, autoplayMs, content.slides.length]);
 
-  const slide = slides[current];
+  const slide = content.slides[current];
 
   return (
     <section
@@ -64,13 +65,11 @@ export default function Sensor() {
       className="scroll-mt-28 pt-20 px-2 sm:px-4 md:px-8 bg-white scroll-offset"
     >
       <div
-        className={`max-w-5xl mx-auto relative transition-all duration-700 ease-out
-                    ${
-                      visible
-                        ? "opacity-100 translate-y-0 delay-[100ms]"
-                        : "opacity-0 translate-y-8"
-                    }
-                `}
+        className={`max-w-5xl mx-auto relative transition-all duration-700 ease-out ${
+          visible
+            ? "opacity-100 translate-y-0 delay-[100ms]"
+            : "opacity-0 translate-y-8"
+        }`}
       >
         {/* Carousel */}
         <div className="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl aspect-[16/9] sm:aspect-[16/7] bg-black flex items-center justify-center">
@@ -91,6 +90,7 @@ export default function Sensor() {
               className="w-full h-full object-contain bg-white"
             />
           )}
+
           {/* Overlay texte sur desktop/tablette */}
           <div className="hidden sm:flex absolute inset-0 flex-col items-center justify-end bg-gradient-to-t from-black/70 via-black/30 to-transparent p-8 md:p-10">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 text-center drop-shadow-lg">
@@ -100,6 +100,7 @@ export default function Sensor() {
               {slide.text}
             </p>
           </div>
+
           {/* Boutons carousel */}
           <button
             onClick={prevSlide}
@@ -131,9 +132,10 @@ export default function Sensor() {
               <path d="M10 5l8 9-8 9" />
             </svg>
           </button>
+
           {/* Dots */}
           <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
-            {slides.map((_, i) => (
+            {content.slides.map((_, i) => (
               <span
                 key={i}
                 className={`w-2 h-2 sm:w-4 sm:h-4 rounded-full ${
@@ -143,6 +145,7 @@ export default function Sensor() {
             ))}
           </div>
         </div>
+
         {/* Texte sous le carousel sur mobile */}
         <div className="flex flex-col items-center justify-center mt-6 sm:hidden min-h-[180px]">
           <h2 className="text-xl font-bold text-slate-800 mb-2 text-center">
@@ -153,6 +156,7 @@ export default function Sensor() {
           </p>
         </div>
       </div>
+
       <div className="h-8 sm:h-12" />
       <div className="max-w-7xl mx-auto px-2 sm:px-6 md:px-12">
         <hr className="border-stone-200 border-t-2 my-2 md:my-10" />

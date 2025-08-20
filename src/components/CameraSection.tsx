@@ -23,6 +23,10 @@ export type CameraSectionProps = {
   onCtaClick?: () => void;
   /** Classe CSS additionnelle */
   className?: string;
+  ariaLabel?: string; // pour localiser l’aria-label
+  learnMoreLabel?: string; // label du lien secondaire
+  learnMoreHref?: string; // href du lien secondaire (ex: "#devices" ou "/de/#devices")
+  ctaHref?: string; // alternative à onCtaClick si tu veux un simple <a>
 };
 
 /**
@@ -72,9 +76,10 @@ export default function CameraSection({
 
   return (
     <section
+      id="camera" 
       ref={sectionRef}
       aria-label="Caméras embarquées – supervision en temps réel"
-      className={`relative w-full overflow-hidden py-16 md:py-24 ${className}`}
+      className={`relative w-full overflow-hidden ${heightClass} py-16 md:py-24 ${className}`}
     >
       {/* Média de fond : vidéo si disponible, sinon image poster */}
       {videoSrcMp4 || videoSrcWebm ? (
