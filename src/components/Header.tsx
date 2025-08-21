@@ -1,9 +1,14 @@
+// =============================== Header.tsx ===============================
+// Composant d'en-tête principal : logo, navigation, login, sélection de langue.
+// Gère l'affichage desktop et mobile (menu burger + drawer).
+
 "use client";
 
 import Link from "next/link";
 import { useState } from "react";
 import { FiLogIn } from "react-icons/fi";
 
+// ========================== Types des props ==========================
 export type NavItem = { href: string; label: string };
 export type HeaderContent = {
   logoAlt: string;
@@ -17,6 +22,7 @@ type HeaderProps = {
   content: HeaderContent;
 };
 
+// ========================== Composant principal ==========================
 export default function Header({ basePath = "", content }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -38,7 +44,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
 
   return (
     <header className="w-full bg-white h-28 px-8 flex items-center justify-between relative z-50 shadow-sm">
-      {/* Logo */}
+      {/* ========================== Logo ========================== */}
       <Link href={basePath || "/"}>
         <img
           src="/photos/logo/full_logo_black.svg"
@@ -47,8 +53,8 @@ export default function Header({ basePath = "", content }: HeaderProps) {
         />
       </Link>
 
-      {/* Menu Desktop */}
-      <nav className="hidden lg:flex items-center gap-8 text-base font-semibold text-black">
+      {/* ========================== Menu Desktop ========================== */}
+      <nav className="hidden lg:flex items-center gap-6 text-base font-semibold text-black">
         {content.nav.map(({ href, label }) => (
           <Link key={href} href={`${basePath}${href}`}>
             <span className="relative group">
@@ -61,7 +67,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
         ))}
       </nav>
 
-      {/* Zone droite Desktop */}
+      {/* ========================== Zone droite Desktop ========================== */}
       <div className="hidden lg:flex items-center gap-6 relative">
         <a
           href={content.login.href}
@@ -73,9 +79,13 @@ export default function Header({ basePath = "", content }: HeaderProps) {
           {content.login.label}
         </a>
 
-        {/* Dropdown Langues */}
+        {/* ========================== Dropdown Langues ========================== */}
         <div className="relative">
-          <button onClick={toggleLang} title="Langue" className="focus:outline-none">
+          <button
+            onClick={toggleLang}
+            title="Langue"
+            className="focus:outline-none"
+          >
             <img
               src={
                 content.locale === "fr"
@@ -92,14 +102,22 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                 onClick={switchToFrench}
                 className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
               >
-                <img src="/photos/french_logo.png" alt="FR" className="w-5 h-5 rounded-full mr-2" />
+                <img
+                  src="/photos/french_logo.png"
+                  alt="FR"
+                  className="w-5 h-5 rounded-full mr-2"
+                />
                 Français
               </button>
               <button
                 onClick={switchToGerman}
                 className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
               >
-                <img src="/photos/german_logo.png" alt="DE" className="w-5 h-5 rounded-full mr-2" />
+                <img
+                  src="/photos/german_logo.png"
+                  alt="DE"
+                  className="w-5 h-5 rounded-full mr-2"
+                />
                 Deutsch
               </button>
             </div>
@@ -107,22 +125,37 @@ export default function Header({ basePath = "", content }: HeaderProps) {
         </div>
       </div>
 
-      {/* Burger Button (Mobile) */}
+      {/* ========================== Burger Button (Mobile) ========================== */}
       <button
         onClick={toggleMenu}
         className="lg:hidden flex items-center justify-center w-10 h-10"
         aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
       >
-        <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-8 h-8 text-black"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           {isOpen ? (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           ) : (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           )}
         </svg>
       </button>
 
-      {/* Overlay */}
+      {/* ========================== Overlay ========================== */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
@@ -130,7 +163,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
         />
       )}
 
-      {/* Drawer Mobile */}
+      {/* ========================== Drawer Mobile ========================== */}
       <div
         className={`fixed top-0 right-0 h-full w-64 max-w-[80%] bg-white z-40 shadow-lg px-6 py-12 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
@@ -153,18 +186,26 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               </button>
             </div>
 
-            {/* Links */}
+            {/* ========================== Liens Mobile ========================== */}
             <nav className="flex flex-col gap-4 text-slate-700 font-medium">
               {content.nav.map(({ href, label }) => (
-                <Link key={href} href={`${basePath}${href}`} onClick={toggleMenu}>
+                <Link
+                  key={href}
+                  href={`${basePath}${href}`}
+                  onClick={toggleMenu}
+                >
                   {label}
                 </Link>
               ))}
             </nav>
 
-            {/* Langues Mobile */}
+            {/* ========================== Langues Mobile ========================== */}
             <div className="relative mt-6">
-              <button onClick={toggleLang} title="Langue" className="focus:outline-none">
+              <button
+                onClick={toggleLang}
+                title="Langue"
+                className="focus:outline-none"
+              >
                 <img
                   src={
                     content.locale === "fr"
@@ -177,12 +218,26 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               </button>
               {langOpen && (
                 <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
-                  <button onClick={switchToFrench} className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black">
-                    <img src="/photos/french_logo.png" alt="FR" className="w-5 h-5 rounded-full mr-2" />
+                  <button
+                    onClick={switchToFrench}
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                  >
+                    <img
+                      src="/photos/french_logo.png"
+                      alt="FR"
+                      className="w-5 h-5 rounded-full mr-2"
+                    />
                     Français
                   </button>
-                  <button onClick={switchToGerman} className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black">
-                    <img src="/photos/german_logo.png" alt="DE" className="w-5 h-5 rounded-full mr-2" />
+                  <button
+                    onClick={switchToGerman}
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                  >
+                    <img
+                      src="/photos/german_logo.png"
+                      alt="DE"
+                      className="w-5 h-5 rounded-full mr-2"
+                    />
                     Deutsch
                   </button>
                 </div>
@@ -190,7 +245,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
             </div>
           </div>
 
-          {/* Bottom: Login */}
+          {/* ========================== Login Mobile ========================== */}
           <div className="mt-8 border-t pt-6">
             <a
               href={content.login.href}
@@ -207,3 +262,4 @@ export default function Header({ basePath = "", content }: HeaderProps) {
     </header>
   );
 }
+// ============================

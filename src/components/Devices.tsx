@@ -55,10 +55,10 @@ export default function Devices({ content }: { content: DevicesContent }) {
         </div>
       </div>
 
-      <div className="h-12" />
-      {/* <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="h-24" />
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <hr className="border-stone-200 border-t-2 my-2 md:my-10" />
-      </div> */}
+      </div>
     </section>
   );
 }

@@ -8,6 +8,7 @@ import type { AboutContent } from "@/components/About";
 import type { ContactContent } from "@/components/Contact";
 
 export const homeDE = {
+  // =============================== SECTION HERO ===============================
   hero: {
     title: "Ihre Flotte, einfach im Griff.",
     subtitle:
@@ -16,6 +17,8 @@ export const homeDE = {
     ctaSecondary: { label: "Funktionen ansehen", href: "#services" },
     videoSrc: "/videos/geo_loc.mp4",
   } satisfies HeroContent,
+
+  // ======================== SECTION FONCTIONNALITÉS ===========================
   features: {
     kicker: "Funktionen",
     title: "Leistungsstarke Werkzeuge für Ihre Flotte",
@@ -51,6 +54,8 @@ export const homeDE = {
       },
     ],
   } satisfies FeaturesContent,
+
+  // ============================= SECTION VÉHICULES ============================
   vehicles: {
     sectionTitle: "Fahrzeugkompatibilität",
     taglineTitle: "Eine einzige Plattform für alle Ihre Fahrzeuge.",
@@ -84,6 +89,8 @@ export const homeDE = {
       },
     ],
   } satisfies VehiclesContent,
+
+  // ============================== SECTION APPAREILS ===========================
   devices: {
     title: "Eine Plattform, überall verfügbar – auf all Ihren Geräten",
     description:
@@ -91,6 +98,8 @@ export const homeDE = {
     imageSrc: "/photos/awda.png",
     imageAlt: "Maflotte-Oberflächen auf mehreren Geräten",
   } satisfies DevicesContent,
+
+  // ============================== SECTION CAMÉRA ==============================
   cameraSection: {
     title: "Ladungen in Echtzeit im Blick behalten",
     subtitle:
@@ -101,6 +110,8 @@ export const homeDE = {
     height: "md",
     showCTA: false,
   },
+
+  // ========================= SECTION CAPTEUR BLUETOOTH ========================
   sensor: {
     slides: [
       {
@@ -120,6 +131,8 @@ export const homeDE = {
       },
     ],
   } satisfies SensorContent,
+
+  // =========================== SECTION RÉFÉRENCES =============================
   references: {
     sectionTitle: "Referenzen",
     sectionSubtitle: "Zufriedene Kundschaft.",
@@ -216,6 +229,8 @@ export const homeDE = {
       },
     ],
   } satisfies ReferencesContent,
+
+  // ============================= SECTION À PROPOS =============================
   about: {
     kicker: "Intelligente Plattform",
     title: "Das bietet Maflotte",
@@ -257,6 +272,8 @@ export const homeDE = {
       },
     ],
   } satisfies AboutContent,
+
+  // ============================== SECTION CONTACT =============================
   contact: {
     left: {
       addressTitle: "Adresse",

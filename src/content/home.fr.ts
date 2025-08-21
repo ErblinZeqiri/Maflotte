@@ -8,6 +8,7 @@ import type { AboutContent } from "@/components/About";
 import type { ContactContent } from "@/components/Contact";
 
 export const homeFR = {
+  // =============================== HERO SECTION ===============================
   hero: {
     title: "Suivez vos véhicules en temps réel grâce à",
     subtitle:
@@ -16,6 +17,8 @@ export const homeFR = {
     ctaSecondary: { label: "Voir les fonctionnalités", href: "#services" },
     videoSrc: "/videos/geo_loc.mp4",
   } satisfies HeroContent,
+
+  // ============================ FEATURES SECTION ==============================
   features: {
     kicker: "Nos fonctionnalités",
     title: "Des outils puissants pour piloter vos véhicules",
@@ -54,6 +57,8 @@ export const homeFR = {
       },
     ],
   } satisfies FeaturesContent,
+
+  // ============================ VEHICLES SECTION ==============================
   vehicles: {
     sectionTitle: "Compatibilité véhicules",
     taglineTitle: "Une seule plateforme pour tous vos véhicules.",
@@ -72,11 +77,11 @@ export const homeFR = {
         title: "Suivez vos camions en temps réel",
         image: "/vehicles/vehicule_camion.png",
       },
-      {
-        title: "Une plateforme pour tout votre parc",
-        image: "/photos/logo/icon_black.svg",
-        isLogo: true,
-      },
+      // {
+      //   title: "Une plateforme pour tout votre parc",
+      //   image: "/photos/logo/icon_black.svg",
+      //   isLogo: true,
+      // },
       {
         title: "Pilotez vos engins de chantier",
         image: "/vehicles/vehicule_chantier.png",
@@ -87,6 +92,8 @@ export const homeFR = {
       },
     ],
   } satisfies VehiclesContent,
+
+  // ============================= DEVICES SECTION ==============================
   devices: {
     title: "Une plateforme accessible partout, sur tous vos appareils",
     description:
@@ -94,6 +101,8 @@ export const homeFR = {
     imageSrc: "/photos/awda.png",
     imageAlt: "Interfaces Maflotte sur plusieurs appareils",
   } satisfies DevicesContent,
+
+  // ============================= CAMERA SECTION ===============================
   cameraSection: {
     title: "Supervisez vos marchandises en temps réel",
     subtitle:
@@ -102,6 +111,8 @@ export const homeFR = {
     height: "md",
     showCTA: false, // pas de CTA pour l’instant (sinon cf. note plus bas)
   },
+
+  // ============================== SENSOR SECTION ==============================
   sensor: {
     slides: [
       {
@@ -121,6 +132,8 @@ export const homeFR = {
       },
     ],
   } satisfies SensorContent,
+
+  // =========================== REFERENCES SECTION =============================
   references: {
     sectionTitle: "Nos références",
     sectionSubtitle: "Des clients satisfaits.",
@@ -217,6 +230,8 @@ export const homeFR = {
       },
     ],
   } satisfies ReferencesContent,
+
+  // ============================== ABOUT SECTION ===============================
   about: {
     kicker: "Plateforme intelligente",
     title: "Ce que vous offre MAFLOTTE",
@@ -258,6 +273,8 @@ export const homeFR = {
       },
     ],
   } satisfies AboutContent,
+
+  // ============================= CONTACT SECTION ==============================
   contact: {
     left: {
       addressTitle: "Adresse",

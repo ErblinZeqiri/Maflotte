@@ -1,28 +1,35 @@
+// =============================== References.tsx ===============================
+// Section références clients : avis, témoignages, logos, etc.
+// Affiche un titre, un sous-titre et une grille animée de cartes références.
+
 "use client";
 
 import { useRef, useEffect, useState } from "react";
 
+// ========================== Types des props ==========================
 export type ReferenceItem = {
   title: string;
   href: string;
   description: string;
-  date: string; // ex. "Mai 2025" / "Mai 2025"
-  datetime: string; // ex. "2025-05-01"
+  date: string;
+  datetime: string;
   category: { title: string; href: string };
   author: { name: string; role: string; href: string; imageUrl: string };
 };
 
 export type ReferencesContent = {
-  sectionTitle: string; // "Nos références" / "Referenzen"
-  sectionSubtitle: string; // "Des clients satisfaits." / "Zufriedene Kundschaft."
+  sectionTitle: string;
+  sectionSubtitle: string;
   items: ReferenceItem[];
 };
 
+// ========================== Composant principal ==========================
 export default function References({
   content,
 }: {
   content: ReferencesContent;
 }) {
+  // Animation d'apparition de la section
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -35,6 +42,7 @@ export default function References({
     return () => observer.disconnect();
   }, []);
 
+  // Animation d'apparition individuelle des cartes
   const getCardAnimation = (index: number) => {
     if (!visible) {
       if (index % 3 === 0) return "opacity-0 -translate-x-8"; // gauche
@@ -47,24 +55,25 @@ export default function References({
   return (
     <section
       id="references"
-      className="scroll-mt-28 pb-20 px-4 sm:px-6 md:px-8 bg-white scroll-offset"
+      className="scroll-mt-28 pb-20 bg-white scroll-offset"
     >
+      <div className="h-12" />
       <div
         ref={sectionRef}
-        className={`max-w-7xl mx-auto transition-all duration-700 ease-out ${
+        className={`max-w-7xl mx-auto px-4 sm:px-6 md:px-12 transition-all duration-700 ease-out ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
         }`}
       >
-        <div className="mx-auto max-w-2xl lg:mx-0 mb-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-            {content.sectionTitle}
-          </h2>
-          <p className="mt-2 text-lg/8 text-gray-600">
-            {content.sectionSubtitle}
-          </p>
-        </div>
+        {/* ======================== Titre et sous-titre ======================== */}
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+          {content.sectionTitle}
+        </h2>
+        <p className="mt-2 text-lg/8 text-gray-600">
+          {content.sectionSubtitle}
+        </p>
 
-        <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-6 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        {/* ======================== Grille de références ======================== */}
+        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-12 lg:max-w-7xl lg:grid-cols-3">
           {content.items.map((post, i) => (
             <article
               key={`${post.title}-${post.datetime}-${i}`}
@@ -120,3 +129,4 @@ export default function References({
     </section>
   );
 }
+// ============================ Fin References.tsx =============================
