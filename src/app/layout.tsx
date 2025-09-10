@@ -17,7 +17,7 @@ export const metadata = {
   description: "Votre flotte, digitalisée et simplifiée",
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-icon.png",
+    apple: "/icon.png",
   },
 };
 
