@@ -47,9 +47,9 @@ export default function Header({ basePath = "", content }: HeaderProps) {
       {/* ========================== Logo ========================== */}
       <Link href={basePath || "/"}>
         <img
-          src="/photos/logo/full_logo_black.svg"
+          src="/photos/logo/logo.png"
           alt={content.logoAlt}
-          className="h-28 object-contain"
+          className="h-full w-auto max-w-[250px] object-contain"
         />
       </Link>
 
@@ -173,9 +173,9 @@ export default function Header({ basePath = "", content }: HeaderProps) {
           <div>
             <div className="flex justify-between items-center mb-6">
               <img
-                src="/photos/logo/full_logo_black.svg"
+                src="/photos/logo/logo.png"
                 alt={content.logoAlt}
-                className="h-12"
+                className="h-14 w-auto max-w-[160px] object-contain"
               />
               <button
                 onClick={toggleMenu}

@@ -46,7 +46,7 @@ export default function Hero({
         </h1>
 
         <img
-          src="photos/logo/full_logo_white.svg"
+          src="photos/logo/logo.png"
           alt="Logo Maflotte"
           className="opacity-0 animate-fade-in-down animation-delay-[700ms] mt-8 w-[320px] max-w-full drop-shadow-md"
         />

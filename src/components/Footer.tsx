@@ -14,7 +14,7 @@ export default function Footer({ content }: { content: FooterContent }) {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           {/* Logo */}
           <img
-            src="photos/logo/full_logo_black.svg"
+            src="photos/logo/logo.png"
             alt="Logo Maflotte"
             className="w-72 h-16 object-contain"
           />
