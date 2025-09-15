@@ -95,7 +95,7 @@ export const homeDE = {
     title: "Eine Plattform, überall verfügbar – auf all Ihren Geräten",
     description:
       "Maflotte vereinfacht Ihr Flottenmanagement, indem alle Daten zentral auf einer Plattform verfügbar sind – im Büro, unterwegs oder direkt vor Ort. Kompatibel mit Desktop, Tablet und Smartphone: Flotte in Echtzeit verfolgen, schneller entscheiden und effizient zusammenarbeiten. Die Oberfläche ist flüssig, intuitiv und sicher – so sparen Sie Zeit und behalten die Kontrolle, allein oder im Team.",
-    imageSrc: "/photos/awda.png",
+    imageSrc: "/photos/multiplatfome.png",
     imageAlt: "Maflotte-Oberflächen auf mehreren Geräten",
   } satisfies DevicesContent,
 

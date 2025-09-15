@@ -9,11 +9,11 @@ export type FeatureItem = {
 };
 
 export type FeaturesContent = {
-  kicker: string;           // "Nos fonctionnalités" / "Funktionen"
-  title: string;            // "Des outils..." / "Leistungsstarke..."
-  note: string;             // petit texte à droite
+  kicker: string;
+  title: string;
+  note: string;
   cta: { label: string; href: string };
-  items: FeatureItem[];     // 5 cartes
+  items: FeatureItem[];
 };
 
 export default function Features({

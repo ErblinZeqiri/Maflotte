@@ -98,7 +98,7 @@ export const homeFR = {
     title: "Une plateforme accessible partout, sur tous vos appareils",
     description:
       "MAFLOTTE simplifie la gestion de vos véhicules en centralisant toutes vos données sur une plateforme accessible partout — au bureau, en déplacement ou sur le terrain. Compatible ordinateur, tablette et smartphone, vous suivez et gérez votre flotte en temps réel pour décider vite et collaborer efficacement. Interface fluide, intuitive et sécurisée : vous gagnez du temps et gardez le contrôle, seul ou en équipe.",
-    imageSrc: "/photos/awda.png",
+    imageSrc: "/photos/multiplatfome.png",
     imageAlt: "Interfaces Maflotte sur plusieurs appareils",
   } satisfies DevicesContent,
 
