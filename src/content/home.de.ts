@@ -236,7 +236,7 @@ export const homeDE = {
     title: "Das bietet Maflotte",
     subtitle:
       "Vereinfachen Sie Ihr Flottenmanagement mit einer klaren, leistungsstarken Komplettlösung.",
-    videoSrc: "/videos/1067634026-preview.mp4",
+    videoSrc: "/videos/about-section.mp4",
     items: [
       {
         title: "Echtzeit-Tracking",

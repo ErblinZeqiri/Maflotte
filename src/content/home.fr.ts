@@ -237,7 +237,7 @@ export const homeFR = {
     title: "Ce que vous offre MAFLOTTE",
     subtitle:
       "Simplifiez la gestion de vos véhicules avec une solution complète, claire et puissante.",
-    videoSrc: "/videos/1067634026-preview.mp4",
+    videoSrc: "/videos/about-section.mp4",
     items: [
       {
         title: "Suivi en temps réel",
