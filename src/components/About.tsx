@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 export type AboutItem = { title: string; text: string };
 export type AboutContent = {
-  kicker: string; // "Plateforme intelligente" / "Intelligente Plattform"
-  title: string; // "Ce que vous offre..." / "Das bietet..."
-  subtitle: string; // phrase sous le H1
-  videoSrc: string; // fond vidéo
-  items: AboutItem[]; // 8 items
+  kicker: string;
+  title: string;
+  subtitle: string;
+  videoSrc: string;
+  items: AboutItem[];
 };
 
 export default function About({ content }: { content: AboutContent }) {
@@ -25,7 +25,6 @@ export default function About({ content }: { content: AboutContent }) {
     return () => observer.disconnect();
   }, []);
 
-  // cascade simple pour les cartes
   useEffect(() => {
     if (visible && itemsVisible.length === 0) {
       const delays = content.items.map((_, i) => i * 300);
@@ -46,7 +45,6 @@ export default function About({ content }: { content: AboutContent }) {
       id="about"
       className="relative w-full scroll-mt-28 overflow-hidden bg-black text-white scroll-offset"
     >
-      {/* vidéo de fond */}
       <video
         autoPlay
         loop
@@ -57,7 +55,6 @@ export default function About({ content }: { content: AboutContent }) {
         <source src={content.videoSrc} type="video/mp4" />
         Votre navigateur ne supporte pas les vidéos HTML5.
       </video>
-
       <div className="absolute inset-0 bg-black/50 z-10" />
 
       <div className="h-12" />
@@ -65,7 +62,6 @@ export default function About({ content }: { content: AboutContent }) {
         ref={sectionRef}
         className="relative z-20 max-w-7xl mx-auto px-6 py-24"
       >
-        {/* Titre + Sous-titre */}
         <div
           className={`text-center mb-20 transition-all duration-700 ease-out ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -81,8 +77,6 @@ export default function About({ content }: { content: AboutContent }) {
             {content.subtitle}
           </p>
         </div>
-
-        {/* Items */}
         <div className="flex flex-wrap -mx-8">
           {content.items.map((item, index) => (
             <div
@@ -104,7 +98,6 @@ export default function About({ content }: { content: AboutContent }) {
           ))}
         </div>
       </div>
-
       <div className="h-12" />
     </section>
   );

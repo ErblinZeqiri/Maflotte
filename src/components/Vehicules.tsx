@@ -13,10 +13,10 @@ export type VehicleCard = {
 };
 
 export type VehiclesContent = {
-  sectionTitle: string;     // "Compatibilité véhicules" / "Fahrzeugkompatibilität"
-  items: VehicleCard[];     // 6 cartes
-  taglineTitle: string;     // "Une seule plateforme..." / "Eine einzige Plattform..."
-  taglineText: string;      // phrase en dessous
+  sectionTitle: string;
+  items: VehicleCard[];
+  taglineTitle: string;
+  taglineText: string;
 };
 
 export default function Vehicles({ content }: { content: VehiclesContent }) {

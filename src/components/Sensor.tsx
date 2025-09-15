@@ -66,17 +66,6 @@ export default function Sensor({ content }: { content: SensorContent }) {
                   <p className="mt-4 text-base md:text-lg leading-7 text-slate-600 max-w-prose">
                     {slide.text}
                   </p>
-
-                  {/* CTA optionnels si tu veux en ajouter plus tard dans tes fichiers de contenu
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <a href="#" className="inline-flex items-center rounded-full px-5 py-3 text-sm font-semibold bg-slate-900 text-white hover:bg-slate-800 transition">
-                      En savoir plus
-                    </a>
-                    <a href="#" className="inline-flex items-center rounded-full px-5 py-3 text-sm font-semibold border border-slate-300 text-slate-700 hover:bg-slate-50 transition">
-                      Demander une démo
-                    </a>
-                  </div>
-                  */}
                 </div>
 
                 {/* Colonne Média */}
@@ -101,11 +90,6 @@ export default function Sensor({ content }: { content: SensorContent }) {
                   )}
                 </div>
               </div>
-
-              {/* Séparateur entre les rangées
-              {idx < content.slides.length - 1 && (
-                <hr className="border-stone-200 border-t-2 my-12 md:my-16" />
-              )} */}
             </div>
           );
         })}
