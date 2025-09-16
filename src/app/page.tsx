@@ -19,16 +19,15 @@ export default function Home() {
     <main>
       <Header basePath="" content={headerFR} />
       <Hero basePath="" content={homeFR.hero} />
-      <Features basePath="" content={homeFR.features} />
       <Vehicles content={homeFR.vehicles} />
       <Devices content={homeFR.devices} />
       <CameraSection
-      {...homeFR.cameraSection}
-        height="md"     
-        videoSrcMp4="/videos/camera_camion.mp4"
+        {...homeFR.cameraSection}
+        height="md"
         className="pb-12 md:pb-16"
       />
       <Sensor content={homeFR.sensor} />
+      <Features basePath="" content={homeFR.features} />
       <References content={homeFR.references} />
       <About content={homeFR.about} />
       <Contact content={homeFR.contact} />

@@ -5,11 +5,13 @@ export const headerFR: HeaderContent = {
   locale: "fr",
   nav: [
     { href: "#accueil", label: "Accueil" },
-    { href: "#services", label: "Services" },
-    { href: "#vehicules", label: "Compatibilité véhicules" },
-    { href: "#devices", label: "Multi-plateforme" },
-    { href: "#camera", label: "Caméras" },
-    { href: "#sensor", label: "Capteurs" },
+    { href: "#solutions", label: "Nos solutions", dropdown: [
+      { href: "#vehicules", label: "Gestion et suivi véhicule" },
+      { href: "#devices", label: "Multi-plateforme" },
+      { href: "#camera", label: "Suivi vidéo en temps réel" },
+      { href: "#sensor", label: "Smart TAG" },
+      { href: "#services", label: "Fonctionnalité" },
+    ]},
     { href: "#references", label: "Références" },
     { href: "#about", label: "À propos" },
     { href: "#contact", label: "Contact" },

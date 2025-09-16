@@ -3,11 +3,11 @@ import { headerDE } from "@/content/header.de";
 
 import Hero from "@/components/Hero";
 import { homeDE } from "@/content/home.de";
-import Features from "@/components/Features";
 import Vehicles from "@/components/Vehicules";
 import Devices from "@/components/Devices";
 import CameraSection from "@/components/CameraSection";
 import Sensor from "@/components/Sensor";
+import Features from "@/components/Features";
 import References from "@/components/References";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -20,7 +20,6 @@ export default function HomeDE() {
     <main>
       <Header basePath="/de" content={headerDE} />
       <Hero basePath="/de" content={homeDE.hero} />
-      <Features basePath="/de" content={homeDE.features} />
       <Vehicles content={homeDE.vehicles} />
       <Devices content={homeDE.devices} />
       <CameraSection
@@ -30,6 +29,7 @@ export default function HomeDE() {
         className="pb-12 md:pb-16"
       />
       <Sensor content={homeDE.sensor} />
+      <Features basePath="/de" content={homeDE.features} />
       <References content={homeDE.references} />
       <About content={homeDE.about} />
       <Contact content={homeDE.contact} />

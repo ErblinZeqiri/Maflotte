@@ -6,10 +6,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiChevronDown } from "react-icons/fi";
 
 // ========================== Types des props ==========================
-export type NavItem = { href: string; label: string };
+export type NavItem = {
+  href: string;
+  label: string;
+  dropdown?: { href: string; label: string }[];
+};
 export type HeaderContent = {
   logoAlt: string;
   locale: "fr" | "de";
@@ -26,6 +30,8 @@ type HeaderProps = {
 export default function Header({ basePath = "", content }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const solutionsTimeout = useState<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const toggleLang = () => setLangOpen((v) => !v);
@@ -42,6 +48,17 @@ export default function Header({ basePath = "", content }: HeaderProps) {
     window.location.href = `/${hash || ""}`;
   };
 
+  // Gestion du hover avec délai pour le dropdown
+  const openSolutions = () => {
+    if (solutionsTimeout[0]) clearTimeout(solutionsTimeout[0]);
+    setSolutionsOpen(true);
+  };
+  const closeSolutions = () => {
+    solutionsTimeout[0] = setTimeout(() => setSolutionsOpen(false), 150);
+  };
+
+  const solutionsNav = content.nav.find((item) => item.href === "#solutions");
+
   return (
     <header className="w-full bg-white h-28 px-8 flex items-center justify-between relative z-50 shadow-sm">
       {/* ========================== Logo ========================== */}
@@ -55,16 +72,53 @@ export default function Header({ basePath = "", content }: HeaderProps) {
 
       {/* ========================== Menu Desktop ========================== */}
       <nav className="hidden lg:flex items-center gap-6 text-base font-semibold text-black">
-        {content.nav.map(({ href, label }) => (
-          <Link key={href} href={`${basePath}${href}`}>
-            <span className="relative group">
+        {content.nav.map((item) =>
+          item.dropdown ? (
+            <div
+              key={item.href}
+              className="relative"
+              onMouseEnter={openSolutions}
+              onMouseLeave={closeSolutions}
+            >
+              <button
+                className="relative group font-bold px-4 py-2 flex items-center gap-2 transition-colors"
+                onClick={() => setSolutionsOpen((v) => !v)}
+              >
+                <span className="transition-colors duration-300">{item.label}</span>
+                <FiChevronDown
+                  className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
+                  size={20}
+                />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+              </button>
+              {solutionsOpen && (
+                <div
+                  className="absolute left-0 mt-2 w-64 bg-white border rounded shadow-lg z-50 flex flex-col"
+                  onMouseEnter={openSolutions}
+                  onMouseLeave={closeSolutions}
+                >
+                  {item.dropdown.map(({ href, label }) => (
+                    <a
+                      key={href}
+                      href={href}
+                      className="relative group px-4 py-2 transition-colors"
+                    >
+                      <span className="transition-colors duration-300">{label}</span>
+                      <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link key={item.href} href={`${basePath}${item.href}`} className="relative group">
               <span className="text-black group-hover:text-black transition-colors duration-300">
-                {label}
+                {item.label}
               </span>
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
-            </span>
-          </Link>
-        ))}
+            </Link>
+          )
+        )}
       </nav>
 
       {/* ========================== Zone droite Desktop ========================== */}
