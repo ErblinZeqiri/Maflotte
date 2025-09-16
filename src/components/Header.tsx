@@ -40,12 +40,10 @@ export default function Header({ basePath = "", content }: HeaderProps) {
     typeof window !== "undefined" ? window.location.hash : "";
 
   const switchToGerman = () => {
-    const hash = getHash();
-    window.location.href = `/de${hash || ""}`;
+    window.location.href = "/de";
   };
   const switchToFrench = () => {
-    const hash = getHash();
-    window.location.href = `/${hash || ""}`;
+    window.location.href = "/";
   };
 
   // Gestion du hover avec délai pour le dropdown
