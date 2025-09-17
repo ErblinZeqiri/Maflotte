@@ -144,7 +144,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
           <button
             onClick={toggleLang}
             title="Langue"
-            className="focus:outline-none"
+            className="focus:outline-none cursor-pointer"
           >
             <img
               src={
@@ -162,7 +162,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
             <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
               <button
                 onClick={switchToFrench}
-                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
               >
                 <img
                   src="/photos/french_logo.png"
@@ -173,7 +173,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               </button>
               <button
                 onClick={switchToGerman}
-                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
               >
                 <img
                   src="/photos/german_logo.png"
@@ -184,7 +184,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               </button>
               <button
                 onClick={switchToEnglish}
-                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
               >
                 <img
                   src="/photos/english_logo.png"
@@ -327,7 +327,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                 <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
                   <button
                     onClick={switchToFrench}
-                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
                   >
                     <img
                       src="/photos/french_logo.png"
@@ -338,7 +338,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   </button>
                   <button
                     onClick={switchToGerman}
-                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
                   >
                     <img
                       src="/photos/german_logo.png"
@@ -349,7 +349,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   </button>
                   <button
                     onClick={switchToEnglish}
-                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
                   >
                     <img
                       src="/photos/english_logo.png"
