@@ -10,11 +10,20 @@ export type SensorSlide = {
   alt: string;
   title: string;
   text: string;
+  bullets?: string[]; // Ajout du tableau de bullets
 };
 
 export type SensorContent = {
   slides: SensorSlide[]; // on garde exactement la même forme (FR/DE)
 };
+
+const carouselImages = [
+  "/photos/eye-beacon-side.png",
+  "/photos/eye-beacon-side-yellow.png",
+  "/photos/eye-sensor-side.png",
+  "/photos/eye-sensor-side-white.png",
+  "/photos/eye-sensor-side-yellow.png",
+];
 
 /**
  * Sensor (version “deux blocs media ↔ texte”, sans carrousel)
@@ -25,6 +34,7 @@ export type SensorContent = {
 export default function Sensor({ content }: { content: SensorContent }) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const [carouselIdx, setCarouselIdx] = useState(0);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -33,6 +43,14 @@ export default function Sensor({ content }: { content: SensorContent }) {
     );
     if (sectionRef.current) obs.observe(sectionRef.current);
     return () => obs.disconnect();
+  }, []);
+
+  // Carousel autoplay
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCarouselIdx((prev) => (prev + 1) % carouselImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
   }, []);
 
   // Sécurité : si pas de contenu, on ne rend rien
@@ -66,10 +84,17 @@ export default function Sensor({ content }: { content: SensorContent }) {
                   <p className="mt-4 text-base md:text-lg leading-7 text-slate-600 max-w-prose">
                     {slide.text}
                   </p>
+                  {slide.bullets && (
+                    <ul className="mt-4 list-disc pl-6 text-base md:text-lg text-slate-700 space-y-2">
+                      {slide.bullets.map((bullet, i) => (
+                        <li key={i}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 {/* Colonne Média */}
-                <div className="relative aspect-[16/9] md:aspect-[5/4] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative aspect-[16/9] md:aspect-[5/4] rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-white">
                   {slide.type === "video" ? (
                     <video
                       src={slide.src}
@@ -79,6 +104,14 @@ export default function Sensor({ content }: { content: SensorContent }) {
                       loop
                       playsInline
                       className="w-full h-full object-cover"
+                    />
+                  ) : idx === 1 ? (
+                    // Carousel pour le deuxième slide
+                    <img
+                      src={carouselImages[carouselIdx]}
+                      alt={slide.alt}
+                      className="w-auto h-full max-h-[320px] object-contain transition-all duration-500"
+                      loading="lazy"
                     />
                   ) : (
                     <img
