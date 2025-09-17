@@ -104,12 +104,61 @@ export const homeFR = {
 
   // ============================= CAMERA SECTION ===============================
   cameraSection: {
-    title: "Supervisez vos marchandises en temps réel",
-    subtitle:
-      "Des caméras connectées pour visualiser vos trajets, analyser les événements et sécuriser votre flotte.",
+    title: "Gardez vos véhicules sous contrôle et sécurisez vos marchandises",
     videoSrcMp4: "/videos/camera_camion.mp4",
     height: "md",
-    showCTA: false, // pas de CTA pour l’instant (sinon cf. note plus bas)
+    showCTA: false,
+    tabs: [
+      {
+        title: "Caméras embarquées intelligentes",
+        text: `Offrez à votre flotte une sécurité optimale grâce à nos caméras embarquées nouvelle génération.
+Installées à l’intérieur comme à l’extérieur des véhicules, elles assurent une surveillance complète en temps réel.`,
+      },
+      {
+        title: "Caméras extérieures",
+        text: `Vision 360° pour prévenir les accidents, protéger vos marchandises et sécuriser vos trajets.`,
+        bullets: [
+          "Surveillance complète en temps réel",
+          "Protection des marchandises",
+          "Sécurité optimale",
+        ],
+      },
+      {
+        title: "Dashcam avancée",
+        text: `Enregistrement vidéo continu pour analyser les trajets, fournir des preuves en cas d’incident et renforcer la transparence.`,
+        bullets: [
+          "Analyse des trajets",
+          "Preuves en cas d’incident",
+          "Transparence renforcée",
+        ],
+      },
+      {
+        title: "Détection de fatigue et de distraction",
+        text: `Grâce à l’intelligence artificielle, nos caméras surveillent l’état du conducteur, alertent en cas de somnolence ou d’inattention et contribuent à réduire considérablement les risques d’accident.`,
+        bullets: [
+          "Surveillance de la vigilance du conducteur",
+          "Alertes en cas de somnolence",
+          "Réduction des risques d’accident",
+        ],
+      },
+      {
+        title: "Suivi en temps réel",
+        text: `Connectées à votre système de gestion, elles offrent une visibilité instantanée sur chaque véhicule.`,
+        bullets: [
+          "Connexion au système de gestion",
+          "Visibilité instantanée",
+          "Suivi de chaque véhicule",
+        ],
+      },
+    ],
+    imageTitles: [
+      "Mini caméra de vision en cabine",
+      "Caméra dôme",
+      "Caméra AHD vue de face",
+      "Caméra AHD à vue latérale",
+      "Caméra de recul AHD Starlight",
+      "Caméra AHD grand angle intelligente",
+    ],
   },
 
   // ============================== SENSOR SECTION ==============================

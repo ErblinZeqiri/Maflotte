@@ -22,8 +22,11 @@ export default function Home() {
       <Vehicles content={homeFR.vehicles} />
       <Devices content={homeFR.devices} />
       <CameraSection
-        {...homeFR.cameraSection}
-        height="md"
+        title={homeFR.cameraSection.title}
+        videoSrcMp4={homeFR.cameraSection.videoSrcMp4}
+        height={homeFR.cameraSection.height}
+        tabs={homeFR.cameraSection.tabs}
+        imageTitles={homeFR.cameraSection.imageTitles}
         className="pb-12 md:pb-16"
       />
       <Sensor content={homeFR.sensor} />

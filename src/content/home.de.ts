@@ -101,14 +101,61 @@ export const homeDE = {
 
   // ============================== SECTION CAMÉRA ==============================
   cameraSection: {
-    title: "Ladungen in Echtzeit im Blick behalten",
-    subtitle:
-      "Vernetzte Kameras für Fahrten, Ereignisanalysen und mehr Sicherheit für Ihre Flotte.",
+    title: "Behalten Sie Ihre Fahrzeuge und Ladungen unter Kontrolle",
     videoSrcMp4: "/videos/camera_camion.mp4",
-    // videoSrcWebm: "/videos/camera_camion.webm",
-    // posterSrc: "/images/camera_poster.jpg",
     height: "md",
     showCTA: false,
+    tabs: [
+      {
+        title: "Intelligente Bordkameras",
+        text: `Bieten Sie Ihrer Flotte maximale Sicherheit mit unseren modernen Bordkameras.
+Innen und außen installiert, sorgen sie für eine lückenlose Echtzeitüberwachung.`,
+      },
+      {
+        title: "Außenkameras",
+        text: `360°-Rundumsicht zur Unfallprävention, zum Schutz Ihrer Ladung und für sichere Fahrten.`,
+        bullets: [
+          "Lückenlose Echtzeitüberwachung",
+          "Schutz der Ladung",
+          "Optimale Sicherheit",
+        ],
+      },
+      {
+        title: "Fortschrittliche Dashcam",
+        text: `Kontinuierliche Videoaufzeichnung zur Analyse der Fahrten, als Beweis im Schadensfall und für mehr Transparenz.`,
+        bullets: [
+          "Fahrtenanalyse",
+          "Beweise im Schadensfall",
+          "Mehr Transparenz",
+        ],
+      },
+      {
+        title: "Müdigkeits- und Ablenkungserkennung",
+        text: `Dank künstlicher Intelligenz überwachen unsere Kameras den Zustand des Fahrers, warnen bei Schläfrigkeit oder Unaufmerksamkeit und senken das Unfallrisiko deutlich.`,
+        bullets: [
+          "Überwachung der Fahreraufmerksamkeit",
+          "Warnungen bei Schläfrigkeit",
+          "Reduziertes Unfallrisiko",
+        ],
+      },
+      {
+        title: "Echtzeit-Tracking",
+        text: `Verbunden mit Ihrem Flottenmanagementsystem bieten sie sofortige Sichtbarkeit für jedes Fahrzeug.`,
+        bullets: [
+          "Verbindung zum Managementsystem",
+          "Sofortige Sichtbarkeit",
+          "Tracking jedes Fahrzeugs",
+        ],
+      },
+    ],
+    imageTitles: [
+      "Mini-Kabinenkamera",
+      "Kuppelkamera",
+      "AHD-Frontkamera",
+      "AHD-Seitenkamera",
+      "AHD-Rückfahrkamera Starlight",
+      "Intelligente AHD-Weitwinkelkamera",
+    ],
   },
 
   // ========================= SECTION CAPTEUR BLUETOOTH ========================

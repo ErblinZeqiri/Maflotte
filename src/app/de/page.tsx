@@ -23,10 +23,11 @@ export default function HomeDE() {
       <Vehicles content={homeDE.vehicles} />
       <Devices content={homeDE.devices} />
       <CameraSection
-        {...homeDE.cameraSection}
-        height="md"     
-        videoSrcMp4="/videos/camera_camion.mp4"
-        className="pb-12 md:pb-16"
+        title={homeDE.cameraSection.title}
+        videoSrcMp4={homeDE.cameraSection.videoSrcMp4}
+        height={homeDE.cameraSection.height}
+        tabs={homeDE.cameraSection.tabs}
+        imageTitles={homeDE.cameraSection.imageTitles}
       />
       <Sensor content={homeDE.sensor} />
       <Features basePath="/de" content={homeDE.features} />

@@ -7,56 +7,37 @@
 import { useEffect, useRef, useState } from "react";
 
 // ========================== Types des props ==========================
+export type CameraTab = {
+  title: string;
+  text: string;
+  bullets?: string[];
+};
+
 export type CameraSectionProps = {
-  title?: string; // Titre principal affiché sur la vidéo
-  subtitle?: string; // Sous-titre optionnel
-  videoSrcMp4?: string; // Source vidéo MP4
-  videoSrcWebm?: string; // Source vidéo WebM
-  posterSrc?: string; // Image d'affiche/fallback
-  height?: "sm" | "md" | "lg"; // Hauteur de la section
-  showCTA?: boolean; // Afficher un bouton d'action
-  ctaLabel?: string; // Libellé du bouton
-  onCtaClick?: () => void; // Action au clic sur le bouton
-  className?: string; // Classe CSS additionnelle
+  title?: string;
+  videoSrcMp4?: string;
+  height?: "sm" | "md" | "lg";
+  tabs?: CameraTab[];
+  showCTA?: boolean;
+  className?: string;
+  imageTitles?: string[]; // <-- AJOUTE CETTE PROP
 };
 
 // ========================== Composant principal ==========================
 export default function CameraSection({
   title = "",
-  subtitle = "",
   videoSrcMp4,
-  videoSrcWebm,
-  posterSrc,
   height = "md",
+  tabs = [],
   showCTA = false,
-  ctaLabel = "",
-  onCtaClick,
   className = "",
+  imageTitles = [],
 }: CameraSectionProps) {
-  // Références et états pour l'animation d'apparition
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [active, setActive] = useState(0);
+  const [blurActive, setBlurActive] = useState(false);
+  const [showImages, setShowImages] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Animation d'apparition au scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  // Respect du mode "réduire les animations" du navigateur
-  useEffect(() => {
-    const m = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (m.matches && videoRef.current) {
-      videoRef.current.pause();
-    }
-  }, []);
-
-  // Classes de hauteur selon la prop
   const heightClass =
     height === "sm"
       ? "h-[500px] md:h-[360px]"
@@ -64,85 +45,147 @@ export default function CameraSection({
       ? "h-[1000px] md:h-[760px]"
       : "h-[700px] md:h-[560px]";
 
-  // ========================== Rendu JSX ==========================
+  const cameraImages = [
+    "/photos/camera/cam_double_obj.png",
+    "/photos/camera/cam_interieur.png",
+    "/photos/camera/cam_vue_avant.png",
+    "/photos/camera/cam_laterale.png",
+    "/photos/camera/cam_recule.png",
+    "/photos/camera/cam_grand_angle.png",
+  ];
+
+  function handleVideoEnd() {
+    setBlurActive(true);
+    setTimeout(() => setShowImages(true), 700); // Attend le flou avant d'afficher les images
+  }
+
+  // Redémarre la vidéo après 10s quand toutes les images sont affichées
+  useEffect(() => {
+    if (showImages) {
+      const timer = setTimeout(() => {
+        setBlurActive(false);
+        setShowImages(false);
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play();
+        }
+      }, 10000); // 10 secondes
+      return () => clearTimeout(timer);
+    }
+  }, [showImages]);
+
   return (
-    <section
-      id="camera"
-      ref={sectionRef}
-      className={`scroll-mt-28 bg-white ${className}`}
-    >
-      {/* Conteneur principal centré */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24">
-        {/* Bloc vidéo/fond avec overlay */}
-        <div
-          className={`relative overflow-hidden rounded-2xl shadow-2xl ${heightClass}`}
-        >
-          {/* ========================== Vidéo ou image de fond ========================== */}
-          {videoSrcMp4 || videoSrcWebm ? (
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              poster={posterSrc}
-              aria-hidden="true"
-            >
-              {videoSrcWebm && <source src={videoSrcWebm} type="video/webm" />}
-              {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />}
-            </video>
-          ) : posterSrc ? (
-            <img
-              src={posterSrc}
-              alt="Illustration caméra"
-              className="w-full h-full object-cover"
-              loading="lazy"
+    <section id="camera" className={`scroll-mt-28 bg-white ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24 flex flex-col gap-10 items-center">
+        {/* Titre principal au-dessus de la vidéo */}
+        <h2 className="text-slate-900 font-bold text-2xl md:text-3xl mb-6 text-center w-full">
+          {title}
+        </h2>
+        {/* Vidéo centrée, taille d'origine */}
+        <div className="w-full flex justify-center">
+          <div className={`relative overflow-hidden rounded-2xl shadow-2xl aspect-[16/9] w-full`}>
+            {videoSrcMp4 && (
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop={false}
+                muted
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+                onEnded={handleVideoEnd}
+              >
+                <source src={videoSrcMp4} type="video/mp4" />
+              </video>
+            )}
+            <div
+              className={`absolute inset-0 bg-black/10 transition-all duration-700 ${
+                blurActive ? "backdrop-blur-lg" : ""
+              }`}
             />
-          ) : (
-            <div className="w-full h-full bg-neutral-900" />
-          )}
-
-          {/* ========================== Overlay dégradé pour lisibilité ========================== */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent" />
-
-          {/* ========================== Texte centré sur la vidéo ========================== */}
-          <div
-            className={`absolute inset-0 flex items-center justify-center px-6 sm:px-8 text-center transition-all duration-700 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-3"
-            }`}
-          >
-            <div className="max-w-[760px] mx-auto">
-              <h2 className="text-white font-semibold tracking-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-                {title}
-              </h2>
-              {subtitle && (
-                <p className="mt-3 text-white/85 text-sm sm:text-base md:text-lg">
-                  {subtitle}
-                </p>
-              )}
-              {/* ========================== Bouton d'action (CTA) ========================== */}
-              {showCTA && (
-                <div className="mt-6 flex items-center justify-center gap-3">
-                  <button
-                    type="button"
-                    onClick={onCtaClick}
-                    className="inline-flex items-center justify-center rounded-xl bg-white text-neutral-900 px-5 py-2.5 text-sm md:text-base font-medium shadow-sm hover:shadow-md transition"
-                  >
-                    {ctaLabel}
-                  </button>
-                  <a
-                    href="#devices"
-                    className="text-white/85 hover:text-white text-sm md:text-base underline underline-offset-4"
-                  >
-                    En savoir plus
-                  </a>
-                </div>
-              )}
-            </div>
+            {/* Images affichées en overlay sur la vidéo */}
+            {showImages && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                {Array.from({ length: Math.ceil(cameraImages.length / 3) }).map((_, groupIdx) => (
+                  <div key={groupIdx} className="flex gap-6 justify-center mb-4">
+                    {cameraImages.slice(groupIdx * 3, groupIdx * 3 + 3).map((img, idx) => {
+                      const titleIdx = groupIdx * 3 + idx;
+                      return (
+                        <div key={img} className="flex flex-col items-center">
+                          <img
+                            src={img}
+                            alt={imageTitles[titleIdx] || ""}
+                            className="rounded-xl shadow-lg w-48 h-48 object-contain bg-white"
+                          />
+                          <span className="mt-2 text-white text-sm font-semibold text-center max-w-[11rem] drop-shadow">
+                            {imageTitles[titleIdx] || ""}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        {/* Onglets + contenu en dessous */}
+        <div className="flex flex-col items-center w-full">
+          {/* 3 onglets côte à côte, puis 2 en dessous */}
+          <div className="flex flex-row gap-2 mb-2 w-full max-w-3xl justify-center">
+            {tabs.slice(0, 3).map((tab, idx) => (
+              <button
+                key={tab.title}
+                className={`relative px-4 py-3 text-base font-semibold transition-all
+                  border border-stone-200 bg-white
+                  ${active === idx
+                    ? "text-slate-900 font-bold shadow"
+                    : "text-slate-500"}
+                  rounded-xl text-left flex-1
+                `}
+                style={{ outline: "none", minWidth: "unset" }}
+                onClick={() => setActive(idx)}
+              >
+                {tab.title}
+                {active === idx && (
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-sky-400 rounded transition-all duration-300" />
+                )}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-row gap-2 mb-6 w-full max-w-3xl justify-center">
+            {tabs.slice(3, 5).map((tab, idx) => (
+              <button
+                key={tab.title}
+                className={`relative px-4 py-3 text-base font-semibold transition-all
+                  border border-stone-200 bg-white
+                  ${active === idx + 3
+                    ? "text-slate-900 font-bold shadow"
+                    : "text-slate-500"}
+                  rounded-xl text-left flex-1
+                `}
+                style={{ outline: "none", minWidth: "unset" }}
+                onClick={() => setActive(idx + 3)}
+              >
+                {tab.title}
+                {active === idx + 3 && (
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-sky-400 rounded transition-all duration-300" />
+                )}
+              </button>
+            ))}
+          </div>
+          <div className="bg-white rounded-2xl shadow-lg border border-stone-200 p-6 w-full max-w-3xl">
+            <p className="text-slate-700 text-base md:text-lg mb-4">
+              {tabs[active].text}
+            </p>
+            {tabs[active].bullets && (
+              <ul className="list-disc pl-5 mb-4 text-slate-700">
+                {tabs[active].bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
