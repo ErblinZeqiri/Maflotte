@@ -142,14 +142,14 @@ export default function CameraSection({
                   ${active === idx
                     ? "text-slate-900 font-bold shadow"
                     : "text-slate-500"}
-                  rounded-xl text-left flex-1
+                  rounded-xl text-left flex-1 cursor-pointer
                 `}
                 style={{ outline: "none", minWidth: "unset" }}
                 onClick={() => setActive(idx)}
               >
                 {tab.title}
                 {active === idx && (
-                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-sky-400 rounded transition-all duration-300" />
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-black rounded transition-all duration-300" />
                 )}
               </button>
             ))}
@@ -163,14 +163,14 @@ export default function CameraSection({
                   ${active === idx + 3
                     ? "text-slate-900 font-bold shadow"
                     : "text-slate-500"}
-                  rounded-xl text-left flex-1
+                  rounded-xl text-left flex-1 cursor-pointer
                 `}
                 style={{ outline: "none", minWidth: "unset" }}
                 onClick={() => setActive(idx + 3)}
               >
                 {tab.title}
                 {active === idx + 3 && (
-                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-sky-400 rounded transition-all duration-300" />
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-black rounded transition-all duration-300" />
                 )}
               </button>
             ))}
