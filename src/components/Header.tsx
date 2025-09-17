@@ -31,6 +31,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [solutionsMobileOpen, setSolutionsMobileOpen] = useState(false);
   const solutionsTimeout = useState<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => setIsOpen((v) => !v);
@@ -69,7 +70,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
       </Link>
 
       {/* ========================== Menu Desktop ========================== */}
-      <nav className="hidden lg:flex items-center gap-6 text-base font-semibold text-black">
+      <nav className="hidden lg:flex items-center gap-8 text-lg font-bold text-black">
         {content.nav.map((item) =>
           item.dropdown ? (
             <div
@@ -79,13 +80,13 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               onMouseLeave={closeSolutions}
             >
               <button
-                className="relative group font-bold px-4 py-2 flex items-center gap-2 transition-colors"
+                className="relative group px-4 py-2 flex items-center gap-2 transition-colors tracking-wide"
                 onClick={() => setSolutionsOpen((v) => !v)}
               >
                 <span className="transition-colors duration-300">{item.label}</span>
                 <FiChevronDown
                   className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
-                  size={20}
+                  size={22}
                 />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
               </button>
@@ -99,7 +100,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                     <a
                       key={href}
                       href={href}
-                      className="relative group px-4 py-2 transition-colors"
+                      className="relative group px-4 py-3 text-base font-semibold transition-colors tracking-wide"
                     >
                       <span className="transition-colors duration-300">{label}</span>
                       <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
@@ -109,7 +110,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               )}
             </div>
           ) : (
-            <Link key={item.href} href={`${basePath}${item.href}`} className="relative group">
+            <Link key={item.href} href={`${basePath}${item.href}`} className="relative group px-2 py-2 tracking-wide">
               <span className="text-black group-hover:text-black transition-colors duration-300">
                 {item.label}
               </span>
@@ -125,7 +126,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
           href={content.login.href}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-2 text-black font-semibold hover:opacity-80"
+          className="flex items-center gap-2 text-black font-bold text-lg px-2 py-2 tracking-wide hover:opacity-80"
         >
           <FiLogIn className="w-6 h-6" />
           {content.login.label}
@@ -239,16 +240,48 @@ export default function Header({ basePath = "", content }: HeaderProps) {
             </div>
 
             {/* ========================== Liens Mobile ========================== */}
-            <nav className="flex flex-col gap-4 text-slate-700 font-medium">
-              {content.nav.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={`${basePath}${href}`}
-                  onClick={toggleMenu}
-                >
-                  {label}
-                </Link>
-              ))}
+            <nav className="flex flex-col gap-4 text-lg font-bold text-slate-700 tracking-wide">
+              {content.nav.map((item) =>
+                item.dropdown ? (
+                  <div key={item.href} className="relative">
+                    <button
+                      className="w-full text-left px-2 py-2 flex items-center gap-2 tracking-wide"
+                      onClick={() => setSolutionsMobileOpen((v) => !v)}
+                    >
+                      {item.label}
+                      <FiChevronDown
+                        className={`transition-transform duration-200 ${solutionsMobileOpen ? "rotate-180" : ""}`}
+                        size={20}
+                      />
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        solutionsMobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                      } flex flex-col`}
+                    >
+                      {item.dropdown?.map(({ href, label }) => (
+                        <a
+                          key={href}
+                          href={href}
+                          className="px-6 py-3 text-base font-semibold tracking-wide text-slate-700 hover:underline"
+                          onClick={toggleMenu}
+                        >
+                          {label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={`${basePath}${item.href}`}
+                    onClick={toggleMenu}
+                    className="px-2 py-2 tracking-wide"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* ========================== Langues Mobile ========================== */}
