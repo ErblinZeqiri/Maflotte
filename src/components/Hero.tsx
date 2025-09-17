@@ -16,7 +16,7 @@ export default function Hero({
   basePath = "",
 }: {
   content: HeroContent;
-  basePath?: "" | "/de";
+  basePath?: "" | "/de" | "/en";
 }) {
   return (
     <section

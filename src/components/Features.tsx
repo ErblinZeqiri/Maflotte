@@ -21,7 +21,7 @@ export default function Features({
   basePath = "",
 }: {
   content: FeaturesContent;
-  basePath?: "" | "/de";
+  basePath?: "" | "/de" | "/en";
 }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);

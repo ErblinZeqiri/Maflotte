@@ -16,13 +16,17 @@ export type NavItem = {
 };
 export type HeaderContent = {
   logoAlt: string;
-  locale: "fr" | "de";
-  nav: NavItem[];
+  locale: "fr" | "de" | "en";
+  nav: Array<{
+    href: string;
+    label: string;
+    dropdown?: { href: string; label: string }[];
+  }>;
   login: { label: string; href: string };
 };
 
 type HeaderProps = {
-  basePath?: "" | "/de";
+  basePath?: "" | "/de" | "/en";
   content: HeaderContent;
 };
 
@@ -45,6 +49,9 @@ export default function Header({ basePath = "", content }: HeaderProps) {
   };
   const switchToFrench = () => {
     window.location.href = "/";
+  };
+  const switchToEnglish = () => {
+    window.location.href = "/en";
   };
 
   // Gestion du hover avec délai pour le dropdown
@@ -143,7 +150,9 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               src={
                 content.locale === "fr"
                   ? "/photos/french_logo.png"
-                  : "/photos/german_logo.png"
+                  : content.locale === "de"
+                  ? "/photos/german_logo.png"
+                  : "/photos/english_logo.png"
               }
               alt={content.locale.toUpperCase()}
               className="w-6 h-6 rounded-full"
@@ -172,6 +181,17 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   className="w-5 h-5 rounded-full mr-2"
                 />
                 Deutsch
+              </button>
+              <button
+                onClick={switchToEnglish}
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+              >
+                <img
+                  src="/photos/english_logo.png"
+                  alt="EN"
+                  className="w-5 h-5 rounded-full mr-2"
+                />
+                English
               </button>
             </div>
           )}
@@ -295,7 +315,9 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   src={
                     content.locale === "fr"
                       ? "/photos/french_logo.png"
-                      : "/photos/german_logo.png"
+                      : content.locale === "de"
+                      ? "/photos/german_logo.png"
+                      : "/photos/english_logo.png"
                   }
                   alt={content.locale.toUpperCase()}
                   className="w-6 h-6 rounded-full"
@@ -324,6 +346,17 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                       className="w-5 h-5 rounded-full mr-2"
                     />
                     Deutsch
+                  </button>
+                  <button
+                    onClick={switchToEnglish}
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                  >
+                    <img
+                      src="/photos/english_logo.png"
+                      alt="EN"
+                      className="w-5 h-5 rounded-full mr-2"
+                    />
+                    English
                   </button>
                 </div>
               )}

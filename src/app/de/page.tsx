@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import { headerDE } from "@/content/header.de";
-
 import Hero from "@/components/Hero";
 import { homeDE } from "@/content/home.de";
 import Vehicles from "@/components/Vehicules";
