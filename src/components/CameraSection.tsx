@@ -83,7 +83,9 @@ export default function CameraSection({
         </h2>
         {/* Vidéo centrée, taille d'origine */}
         <div className="w-full flex justify-center">
-          <div className={`relative overflow-hidden rounded-2xl shadow-2xl aspect-[16/9] w-full`}>
+          <div
+            className={`relative overflow-hidden rounded-2xl shadow-2xl aspect-[16/9] w-full`}
+          >
             {videoSrcMp4 && (
               <video
                 ref={videoRef}
@@ -107,25 +109,35 @@ export default function CameraSection({
             {/* Images affichées en overlay sur la vidéo */}
             {showImages && (
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                {Array.from({ length: Math.ceil(cameraImages.length / 3) }).map((_, groupIdx) => (
-                  <div key={groupIdx} className="flex gap-6 justify-center mb-4">
-                    {cameraImages.slice(groupIdx * 3, groupIdx * 3 + 3).map((img, idx) => {
-                      const titleIdx = groupIdx * 3 + idx;
-                      return (
-                        <div key={img} className="flex flex-col items-center">
-                          <img
-                            src={img}
-                            alt={imageTitles[titleIdx] || ""}
-                            className="rounded-xl shadow-lg w-48 h-48 object-contain bg-white"
-                          />
-                          <span className="mt-2 text-white text-sm font-semibold text-center max-w-[11rem] drop-shadow">
-                            {imageTitles[titleIdx] || ""}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
+                {Array.from({ length: Math.ceil(cameraImages.length / 3) }).map(
+                  (_, groupIdx) => (
+                    <div
+                      key={groupIdx}
+                      className="flex gap-6 justify-center mb-4"
+                    >
+                      {cameraImages
+                        .slice(groupIdx * 3, groupIdx * 3 + 3)
+                        .map((img, idx) => {
+                          const titleIdx = groupIdx * 3 + idx;
+                          return (
+                            <div
+                              key={img}
+                              className="flex flex-col items-center"
+                            >
+                              <img
+                                src={img}
+                                alt={imageTitles[titleIdx] || ""}
+                                className="rounded-xl shadow-lg w-48 h-48 object-contain bg-white"
+                              />
+                              <span className="mt-2 text-white text-sm font-semibold text-center max-w-[11rem] drop-shadow">
+                                {imageTitles[titleIdx] || ""}
+                              </span>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  )
+                )}
               </div>
             )}
           </div>
@@ -139,9 +151,11 @@ export default function CameraSection({
                 key={tab.title}
                 className={`relative px-4 py-3 text-base font-semibold transition-all
                   border border-stone-200 bg-white
-                  ${active === idx
-                    ? "text-slate-900 font-bold shadow"
-                    : "text-slate-500"}
+                  ${
+                    active === idx
+                      ? "text-slate-900 font-bold shadow"
+                      : "text-slate-500"
+                  }
                   rounded-xl text-left flex-1 cursor-pointer
                 `}
                 style={{ outline: "none", minWidth: "unset" }}
@@ -160,9 +174,11 @@ export default function CameraSection({
                 key={tab.title}
                 className={`relative px-4 py-3 text-base font-semibold transition-all
                   border border-stone-200 bg-white
-                  ${active === idx + 3
-                    ? "text-slate-900 font-bold shadow"
-                    : "text-slate-500"}
+                  ${
+                    active === idx + 3
+                      ? "text-slate-900 font-bold shadow"
+                      : "text-slate-500"
+                  }
                   rounded-xl text-left flex-1 cursor-pointer
                 `}
                 style={{ outline: "none", minWidth: "unset" }}
@@ -190,7 +206,7 @@ export default function CameraSection({
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <hr className="border-stone-200 border-t-2 my-2 md:my-10" />
+        <hr className="border-stone-200 border-t-2 " />
       </div>
     </section>
   );

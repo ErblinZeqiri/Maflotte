@@ -1,13 +1,12 @@
 import Header from "@/components/Header";
 import { headerFR } from "@/content/header.fr";
-
 import Hero from "@/components/Hero";
 import { homeFR } from "@/content/home.fr";
-import Features from "@/components/Features";
 import Vehicles from "@/components/Vehicules";
 import Devices from "@/components/Devices";
 import CameraSection from "@/components/CameraSection";
 import Sensor from "@/components/Sensor";
+import Features from "@/components/Features";
 import References from "@/components/References";
 import About from "@/components/About";
 import Contact from "@/components/Contact";

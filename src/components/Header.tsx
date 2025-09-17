@@ -26,7 +26,7 @@ export type HeaderContent = {
 };
 
 type HeaderProps = {
-  basePath?: "" | "/de" | "/en";
+  basePath?: string;
   content: HeaderContent;
 };
 

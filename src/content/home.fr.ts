@@ -206,7 +206,8 @@ L’Eye Beacon agit comme une balise unique pour identifier et localiser vos bie
       {
         title: "Un gain de temps considérable",
         href: "#",
-        description: "Nous avons centralisé tous nos véhicules, même ceux en location courte durée. La gestion est plus simple et nous gagnons du temps chaque jour.",
+        description:
+          "Nous avons centralisé tous nos véhicules, même ceux en location courte durée. La gestion est plus simple et nous gagnons du temps chaque jour.",
         date: "Mai 2025",
         datetime: "2025-05-01",
         category: { title: "GVA CARS", href: "#" },
@@ -216,7 +217,8 @@ L’Eye Beacon agit comme une balise unique pour identifier et localiser vos bie
       {
         title: "Une solution claire et efficace",
         href: "#",
-        description: "La plateforme nous apporte une vraie transparence sur notre flotte. Les rappels automatiques et les rapports facilitent le suivi de nos utilitaires.",
+        description:
+          "La plateforme nous apporte une vraie transparence sur notre flotte. Les rappels automatiques et les rapports facilitent le suivi de nos utilitaires.",
         date: "Avril 2025",
         datetime: "2025-04-01",
         category: { title: "TransLog Suisse", href: "#" },
@@ -226,7 +228,8 @@ L’Eye Beacon agit comme une balise unique pour identifier et localiser vos bie
       {
         title: "Idéal pour une PME comme la nôtre",
         href: "#",
-        description: "Interface intuitive, support réactif et prix honnête. MAFLOTTE nous aide à digitaliser la gestion de notre flotte sans prise de tête.",
+        description:
+          "Interface intuitive, support réactif et prix honnête. MAFLOTTE nous aide à digitaliser la gestion de notre flotte sans prise de tête.",
         date: "Mars 2025",
         datetime: "2025-03-01",
         category: { title: "Electricité Favre SA", href: "#" },
@@ -236,7 +239,8 @@ L’Eye Beacon agit comme une balise unique pour identifier et localiser vos bie
       {
         title: "Adapté à tous nos véhicules",
         href: "#",
-        description: "Tous nos véhicules sont suivis sur une seule interface, qu’il s’agisse de camionnettes, d’engins de chantier ou de scooters. Très pratique au quotidien.",
+        description:
+          "Tous nos véhicules sont suivis sur une seule interface, qu’il s’agisse de camionnettes, d’engins de chantier ou de scooters. Très pratique au quotidien.",
         date: "Février 2025",
         datetime: "2025-02-01",
         category: { title: "Servibat Genève", href: "#" },
@@ -246,7 +250,8 @@ L’Eye Beacon agit comme une balise unique pour identifier et localiser vos bie
       {
         title: "Un onboarding rapide et intuitif",
         href: "#",
-        description: "La mise en place a été rapide et l’interface est facile à prendre en main, même pour nos chauffeurs sur mobile.",
+        description:
+          "La mise en place a été rapide et l’interface est facile à prendre en main, même pour nos chauffeurs sur mobile.",
         date: "Janvier 2025",
         datetime: "2025-01-01",
         category: { title: "TransAlp Distribution", href: "#" },
@@ -256,7 +261,8 @@ L’Eye Beacon agit comme une balise unique pour identifier et localiser vos bie
       {
         title: "La meilleure plateforme qu’on ait testée",
         href: "#",
-        description: "Après plusieurs essais, MAFLOTTE s’est démarquée par sa stabilité et son rapport qualité-prix. Nous sommes très satisfaits.",
+        description:
+          "Après plusieurs essais, MAFLOTTE s’est démarquée par sa stabilité et son rapport qualité-prix. Nous sommes très satisfaits.",
         date: "Décembre 2024",
         datetime: "2024-12-01",
         category: { title: "AlpiCar Service", href: "#" },

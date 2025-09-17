@@ -13,7 +13,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { footerDE } from "@/content/footer.de";
 
-
 export default function HomeDE() {
   return (
     <main>
