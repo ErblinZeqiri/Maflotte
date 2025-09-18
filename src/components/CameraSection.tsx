@@ -20,7 +20,7 @@ export type CameraSectionProps = {
   tabs?: CameraTab[];
   showCTA?: boolean;
   className?: string;
-  imageTitles?: string[]; // <-- AJOUTE CETTE PROP
+  imageTitles?: string[];
 };
 
 // ========================== Composant principal ==========================
@@ -56,10 +56,9 @@ export default function CameraSection({
 
   function handleVideoEnd() {
     setBlurActive(true);
-    setTimeout(() => setShowImages(true), 700); // Attend le flou avant d'afficher les images
+    setTimeout(() => setShowImages(true), 700);
   }
 
-  // Redémarre la vidéo après 10s quand toutes les images sont affichées
   useEffect(() => {
     if (showImages) {
       const timer = setTimeout(() => {
@@ -69,7 +68,7 @@ export default function CameraSection({
           videoRef.current.currentTime = 0;
           videoRef.current.play();
         }
-      }, 10000); // 10 secondes
+      }, 10000);
       return () => clearTimeout(timer);
     }
   }, [showImages]);

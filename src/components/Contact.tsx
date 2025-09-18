@@ -533,6 +533,8 @@ export default function Contact({ content }: { content: ContactContent }) {
                   <a
                     href={content.form.privacyLink}
                     className="underline decoration-slate-400 underline-offset-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {content.form.privacyText}
                   </a>

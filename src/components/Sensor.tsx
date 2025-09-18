@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 
-/** === Types compatibles avec tes fichiers home.fr.ts / home.de.ts === */
 export type SensorSlide = {
   type: "video" | "image";
   src: string;
@@ -10,11 +9,11 @@ export type SensorSlide = {
   alt: string;
   title: string;
   text: string;
-  bullets?: string[]; // Ajout du tableau de bullets
+  bullets?: string[];
 };
 
 export type SensorContent = {
-  slides: SensorSlide[]; // on garde exactement la même forme (FR/DE)
+  slides: SensorSlide[];
 };
 
 const carouselImages = [
@@ -53,7 +52,6 @@ export default function Sensor({ content }: { content: SensorContent }) {
     return () => clearInterval(timer);
   }, []);
 
-  // Sécurité : si pas de contenu, on ne rend rien
   if (!content?.slides || content.slides.length === 0) return null;
 
   return (
@@ -64,13 +62,11 @@ export default function Sensor({ content }: { content: SensorContent }) {
         }`}
       >
         {content.slides.map((slide, idx) => {
-          // Alternance : pair => texte à gauche, impair => texte à droite
-          const textLeft = idx % 2 === 0; // 0,2,4... texte à gauche
+          const textLeft = idx % 2 === 0;
           return (
             <div key={idx} className="mb-12 md:mb-16">
               <div
                 className={`grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-12 ${
-                  // si texte à droite, on inverse les colonnes sur desktop
                   !textLeft
                     ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
                     : ""
@@ -106,7 +102,6 @@ export default function Sensor({ content }: { content: SensorContent }) {
                       className="w-full h-full object-cover"
                     />
                   ) : idx === 1 ? (
-                    // Carousel pour le deuxième slide
                     <img
                       src={carouselImages[carouselIdx]}
                       alt={slide.alt}
