@@ -5,6 +5,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 // ========================== Types des props ==========================
 export type CameraTab = {
@@ -73,15 +74,34 @@ export default function CameraSection({
     }
   }, [showImages]);
 
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
+
   return (
     <section id="camera" className={`scroll-mt-28 bg-white ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24 flex flex-col gap-10 items-center">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-24 flex flex-col gap-10 items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeUp}
+      >
         {/* Titre principal au-dessus de la vidéo */}
-        <h2 className="text-slate-900 font-bold text-2xl md:text-3xl mb-6 text-center w-full">
+        <motion.h2
+          className="text-slate-900 font-bold text-2xl md:text-3xl mb-6 text-center w-full"
+          variants={fadeUp}
+        >
           {title}
-        </h2>
+        </motion.h2>
         {/* Vidéo centrée, taille d'origine */}
-        <div className="w-full flex justify-center">
+        <motion.div
+          className="w-full flex justify-center"
+          variants={fadeUp}
+          transition={{ delay: 0.2 }}
+        >
           <div
             className={`relative overflow-hidden rounded-2xl shadow-2xl aspect-[16/9] w-full`}
           >
@@ -105,48 +125,55 @@ export default function CameraSection({
                 blurActive ? "backdrop-blur-lg" : ""
               }`}
             />
-            {/* Images affichées en overlay sur la vidéo */}
             {showImages && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <motion.div
+                className="absolute inset-0 flex flex-col items-center justify-center"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7 }}
+              >
                 {Array.from({ length: Math.ceil(cameraImages.length / 3) }).map(
                   (_, groupIdx) => (
-                    <div
-                      key={groupIdx}
-                      className="flex gap-6 justify-center mb-4"
-                    >
+                    <div key={groupIdx} className="flex gap-6 justify-center mb-4">
                       {cameraImages
                         .slice(groupIdx * 3, groupIdx * 3 + 3)
                         .map((img, idx) => {
                           const titleIdx = groupIdx * 3 + idx;
                           return (
-                            <div
+                            <motion.div
                               key={img}
                               className="flex flex-col items-center"
+                              style={{ width: "12rem" }}
+                              initial={{ opacity: 0, y: 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: idx * 0.15 }}
                             >
-                              <img
-                                src={img}
-                                alt={imageTitles[titleIdx] || ""}
-                                className="rounded-xl shadow-lg w-48 h-48 object-contain bg-white"
-                              />
-                              <span className="mt-2 text-white text-sm font-semibold text-center max-w-[11rem] drop-shadow">
+                              <div className="relative w-full h-48 flex items-center justify-center">
+                                <div className="absolute inset-0 rounded-xl backdrop-blur-lg" />
+                                <img
+                                  src={img}
+                                  alt={imageTitles[titleIdx] || ""}
+                                  className="relative rounded-xl shadow-lg w-full h-full object-contain z-10"
+                                  style={{ background: "transparent" }}
+                                />
+                              </div>
+                              <span className="mt-4 px-3 py-1 rounded-lg backdrop-blur-lg bg-white/10 text-white text-sm font-semibold text-center max-w-[11rem] drop-shadow z-10">
                                 {imageTitles[titleIdx] || ""}
                               </span>
-                            </div>
+                            </motion.div>
                           );
                         })}
                     </div>
                   )
                 )}
-              </div>
+              </motion.div>
             )}
           </div>
-        </div>
-        {/* Onglets + contenu en dessous */}
+        </motion.div>
         <div className="flex flex-col items-center w-full">
-          {/* 3 onglets côte à côte, puis 2 en dessous */}
           <div className="flex flex-row gap-2 mb-2 w-full max-w-3xl justify-center">
             {tabs.slice(0, 3).map((tab, idx) => (
-              <button
+              <motion.button
                 key={tab.title}
                 className={`relative px-4 py-3 text-base font-semibold transition-all
                   border border-stone-200 bg-white
@@ -159,17 +186,19 @@ export default function CameraSection({
                 `}
                 style={{ outline: "none", minWidth: "unset" }}
                 onClick={() => setActive(idx)}
+                variants={fadeUp}
+                transition={{ delay: idx * 0.1 }}
               >
                 {tab.title}
                 {active === idx && (
                   <span className="absolute left-0 bottom-0 w-full h-0.5 bg-black rounded transition-all duration-300" />
                 )}
-              </button>
+              </motion.button>
             ))}
           </div>
           <div className="flex flex-row gap-2 mb-6 w-full max-w-3xl justify-center">
             {tabs.slice(3, 5).map((tab, idx) => (
-              <button
+              <motion.button
                 key={tab.title}
                 className={`relative px-4 py-3 text-base font-semibold transition-all
                   border border-stone-200 bg-white
@@ -182,15 +211,21 @@ export default function CameraSection({
                 `}
                 style={{ outline: "none", minWidth: "unset" }}
                 onClick={() => setActive(idx + 3)}
+                variants={fadeUp}
+                transition={{ delay: (idx + 3) * 0.1 }}
               >
                 {tab.title}
                 {active === idx + 3 && (
                   <span className="absolute left-0 bottom-0 w-full h-0.5 bg-black rounded transition-all duration-300" />
                 )}
-              </button>
+              </motion.button>
             ))}
           </div>
-          <div className="bg-white rounded-2xl shadow-lg border border-stone-200 p-6 w-full max-w-3xl">
+          <motion.div
+            className="bg-white rounded-2xl shadow-lg border border-stone-200 p-6 w-full max-w-3xl"
+            variants={fadeUp}
+            transition={{ delay: 0.4 }}
+          >
             <p className="text-slate-700 text-base md:text-lg mb-4">
               {tabs[active].text}
             </p>
@@ -201,9 +236,9 @@ export default function CameraSection({
                 ))}
               </ul>
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <hr className="border-stone-200 border-t-2 " />
       </div>
