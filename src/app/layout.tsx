@@ -1,6 +1,9 @@
+// NE PAS mettre "use client" ici !
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollToTopButton from "@/components/ScrollToTopButton"; // composant client
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Maflotte",
   description: "Votre flotte, digitalisée et simplifiée",
   icons: {
@@ -21,17 +24,12 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        <ScrollToTopButton />
       </body>
     </html>
   );
