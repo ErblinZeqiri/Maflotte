@@ -33,6 +33,8 @@ export default function Footer({ content }: { content: FooterContent }) {
               <a
                 key={l.label}
                 href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-black text-sm font-semibold hover:underline"
               >
                 {l.label}

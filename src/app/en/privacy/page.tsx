@@ -1,7 +1,7 @@
-import { privacyFR } from "@/content/privacy.fr";
+import { privacyEN } from "@/content/privacy.en";
 
-export default function PrivacyPolicy() {
-  const c = privacyFR;
+export default function PrivacyPolicyEN() {
+  const c = privacyEN;
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-white flex items-center justify-center">
       <section className="max-w-2xl w-full mx-auto px-4 py-16">
@@ -24,19 +24,19 @@ export default function PrivacyPolicy() {
                     ))}
                   </ul>
                 )}
-                {section.heading === "Responsable" && (
+                {section.heading === "Controller" && (
                   <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 mb-4">
                     <div className="font-medium text-slate-900">{c.company.name}</div>
                     <div>
-                      Email :{" "}
+                      Email:{" "}
                       <a className="underline" href={`mailto:${c.company.email}`}>
                         {c.company.email}
                       </a>
                     </div>
-                    <div>Adresse : {c.company.address}</div>
+                    <div>Address: {c.company.address}</div>
                   </div>
                 )}
-                {section.heading === "Vos droits" && (
+                {section.heading === "Your rights" && (
                   <a className="underline" href={`mailto:${c.company.email}`}>
                     {c.company.email}
                   </a>

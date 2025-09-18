@@ -322,7 +322,7 @@ The Eye Beacon acts as a unique tag to identify and locate your assets nearby, w
         { value: "51+", label: "51+ vehicles" },
       ],
       consentLabel: "I agree to be contacted.",
-      privacyLink: "/privacy",
+      privacyLink: "/en/privacy",
       privacyText: "Privacy Policy",
       submitLabel: "Send",
       successMsg: "Thank you! We’ll get back to you soon.",

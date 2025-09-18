@@ -338,7 +338,7 @@ Der Eye Beacon dient als eindeutige Kennung zur Identifikation und Lokalisierung
         { value: "51+", label: "51+ Fahrzeuge" },
       ],
       consentLabel: "Ich bin mit einer Kontaktaufnahme einverstanden.",
-      privacyLink: "/privacy",
+      privacyLink: "/de/privacy",
       privacyText: "Datenschutzrichtlinie",
       submitLabel: "Senden",
       successMsg: "Danke! Wir melden uns zeitnah.",
